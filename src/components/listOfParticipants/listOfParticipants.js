@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './listOfParticipants.css';
+import './listOfParticipants.scss';
 import isEqual from 'lodash/isEqual';
 import ParticipantCard from './participantCard/participantCard';
 
@@ -17,7 +17,7 @@ class ListOfParticipants extends Component {
         const active = isEqual(valueSeleted, participant.name);
 
         return (
-            <div className="col-md-4">
+            <div key={`participant-${index}`} className="col-md-4">
                 <ParticipantCard
                     name={participant.name}
                     description={participant.description}

@@ -1,31 +1,28 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './participantCard.css';
+import './participantCard.scss';
 import isNil from 'lodash/isNil';
-
+import classnames from 'classnames';
 class ParticipantCard extends Component {
 
     render() {
         const { name, description, active } = this.props;
-        const classDiv = active ? 'card participant-card-active' : 'card';
-        const classCircle = active ? 'circle-active' : 'circle';
+        const classDiv = classnames('row', 'participant-card', {
+            ' participant-card__active': active
+        });
+        const classCircle = classnames('participant-card__circle', {
+            ' participant-card__circle--active': active
+        });
         const fistLetter = isNil(name) ? null : name.substring(0, 1);
 
         return (
-            <div className="participant-card">
-                <div className={classDiv}>
-
-                    <div className="card-body">
-                        <div className="row" >
-                            <div className="participant-card-container-circle">
-                                <div className={classCircle}>{fistLetter}</div>
-                            </div>
-                            <div className="col-md-8">
-                                <h5 className="card-title">{name}</h5>
-                                <p className="card-text participant-card-text">{description}</p>
-                            </div>
-                        </div>
-                    </div>
+            <div className={classDiv}>
+                <div className="participant-card__container-circle">
+                    <div className={classCircle}>{fistLetter}</div>
+                </div>
+                <div className="col-md-8">
+                    <h5 className="participant-card__card-title">{name}</h5>
+                    <p className="participant-card__card-text">{description}</p>
                 </div>
             </div>
         );
