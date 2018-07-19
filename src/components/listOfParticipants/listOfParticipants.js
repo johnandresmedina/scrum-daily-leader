@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './listOfParticipants.css';
 import isEqual from 'lodash/isEqual';
+import ParticipantCard from './participantCard/participantCard';
 
 class ListOfParticipants extends Component {
 
@@ -13,15 +14,16 @@ class ListOfParticipants extends Component {
 
     mapEachParticipant(participant, index) {
         const { valueSeleted } = this.props;
-        const classLi = isEqual(valueSeleted, participant.name) ? "list-group-item active" : "list-group-item";
+        const active = isEqual(valueSeleted, participant.name);
 
         return (
-            <li className={classLi} key={index}>
-                <div>
-                    <span><b>Name: </b>{participant.name} </span>
-                    <span><b>Nickname: </b>{participant.alias}</span>
-                </div>
-            </li>
+            <div className="col-md-4">
+                <ParticipantCard
+                    name={participant.name}
+                    description={participant.description}
+                    active={active}
+                />
+            </div>
         );
     }
 
@@ -29,9 +31,9 @@ class ListOfParticipants extends Component {
         const { listParticipants } = this.props;
         return (
             <div className="list-of-participants">
-                <ul className="list-group">
+                <div className="row">
                     {listParticipants.map((participant, key) => this.mapEachParticipant(participant, key))}
-                </ul>
+                </div>
             </div>
         );
     }
