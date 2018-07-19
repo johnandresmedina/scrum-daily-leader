@@ -16,7 +16,7 @@ class ListOfParticipants extends Component {
         const classLi = isEqual(valueSeleted, participant.name) ? "list-group-item active" : "list-group-item";
 
         return (
-            <li class={classLi} key={index}>
+            <li className={classLi} key={index}>
                 <div>
                     <span><b>Name: </b>{participant.name} </span>
                     <span><b>Nickname: </b>{participant.alias}</span>
@@ -29,7 +29,7 @@ class ListOfParticipants extends Component {
         const { listParticipants } = this.props;
         return (
             <div className="list-of-participants">
-                <ul class="list-group">
+                <ul className="list-group">
                     {listParticipants.map((participant, key) => this.mapEachParticipant(participant, key))}
                 </ul>
             </div>
