@@ -8,8 +8,8 @@ class SearchComponent extends Component {
         const { onHandleModifyValue } = this.props;
         return (
             <div className="search-component">
-                <input class="form-control" type="text" placeholder="Ingrese un criterio de busqueda" />
-                <button type="button" class="btn btn-link" onClick={onHandleModifyValue}>Roulette</button>
+                <input className="form-control" type="text" placeholder="Ingrese un criterio de busqueda" />
+                <button type="button" className="btn btn-link" onClick={onHandleModifyValue}>Roulette</button>
             </div>
         );
     }
