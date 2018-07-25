@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import logo from '../assets/logo.svg';
+import logo from './assets/logo.svg';
 import './App.css';
 import random from 'lodash/random';
 
 //Components
-import SearchComponent from './searchComponent/searchComponent';
-import ListOfParticipants from './listOfParticipants/listOfParticipants';
+import SearchComponent from './components/searchComponent/searchComponent';
+import ListOfParticipants from './components/listOfParticipants/listOfParticipants';
 
 //Constants
-import { listOfParticipants } from '../constants/globalConstants';
+import { listOfParticipants } from './constants/globalConstants';
 
 class App extends Component {
 
@@ -36,21 +36,15 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to loans roulette</h1>
         </header>
-        <div className="row" >
-          <div className="col-md-3 App-first-container">
-
-          </div>
-          <div className="col-md-6 App-middle-container">
+        <div className="row App-container-cols" >
+          <div className="col-md-9">
             <SearchComponent onHandleModifyValue={this.onClickRouletteButton} />
             <ListOfParticipants listParticipants={listOfParticipants} valueSeleted={valueSeleted} />
           </div>
-          <div className="col-md-3 App-last-container">
+          <div className="col-md-3">
 
           </div>
         </div>
-        <p className="App-intro">
-          Powered by Alejandro Saldarriaga, Andres Ochoa, John Medina y último pero no menos importante Wilfer Salazar
-        </p>
       </div>
     );
   }

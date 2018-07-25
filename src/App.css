@@ -27,11 +27,6 @@
   to { transform: rotate(360deg); }
 }
 
-.App-first-container {
-}
-
-.App-middle-container {
-}
-
-.App-last-container {
+.App-container-cols {
+  margin: 20px
 }
