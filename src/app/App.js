@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import logo from './assets/logo.svg';
-import './App.css';
+import logo from '../assets/logo.svg';
+import './App.scss';
 import random from 'lodash/random';
 
 //Components
-import SearchComponent from './components/searchComponent/searchComponent';
-import ListOfParticipants from './components/listOfParticipants/listOfParticipants';
+import SearchComponent from '../components/searchComponent/searchComponent';
+import ListOfParticipants from '../components/listOfParticipants/listOfParticipants';
 
 //Constants
-import { listOfParticipants } from './constants/globalConstants';
+import { listOfParticipants } from '../constants/index';
 
 class App extends Component {
 
@@ -31,12 +31,12 @@ class App extends Component {
   render() {
     const { valueSeleted } = this.state;
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to loans roulette</h1>
+      <div className="app">
+        <header className="app__header">
+          <img src={logo} className="app__logo" alt="logo" />
+          <h1 className="app__title">Welcome to loans roulette</h1>
         </header>
-        <div className="row App-container-cols" >
+        <div className="row app__container-cols" >
           <div className="col-md-9">
             <SearchComponent onHandleModifyValue={this.onClickRouletteButton} />
             <ListOfParticipants listParticipants={listOfParticipants} valueSeleted={valueSeleted} />
