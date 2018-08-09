@@ -1,37 +1,44 @@
+$participation-card-bg-color: #fdcfdc;
+$participation-card-border-color: #000;
+$participation-card-text-color: #000;
+$participation-card-circle-bg-color: #98b96b;
+$participation-card-active-bg-color: #f00;
+$participation-card-active-text-color: #fff;
+
 .participant-card {
-    border: 1px solid black;
-    border-radius: 10px;
-    margin: 0 -10px 25px -10px;
-    padding: 0 10px;
+  border: 1px solid $participation-card-border-color;
+  border-radius: 10px;
+  margin: 0 -10px 25px;
+  padding: 0 10px;
 
-    &__active {
-        background-color: #FDCFCD;
-        border-color: black;
-    }
-    
-    &__text {
-        font-size: 14px;
-        text-align: justify;
-    }
-    
-    &__container-circle {
-        margin-top: 10px;
-    }
-    
-    &__circle {
-        width: 90px;
-        height: 90px;
-        border-radius: 50%;
-        font-size: 50px;
-        color: #000;
-        text-align: center;
-        background: #98B96B;
-        display: inline-block;
-        margin-top: 5px;
+  &__active {
+    background-color: $participation-card-bg-color;
+    border-color: $participation-card-border-color;
+  }
 
-        &--active {
-            color: white;
-            background: red;
-        }
+  &__text {
+    font-size: 14px;
+    text-align: justify;
+  }
+
+  &__container-circle {
+    margin-top: 10px;
+  }
+
+  &__circle {
+    background-color: $participation-card-circle-bg-color;
+    border-radius: 50%;
+    color: $participation-card-text-color;
+    display: inline-block;
+    font-size: 50px;
+    height: 90px;
+    margin-top: 5px;
+    text-align: center;
+    width: 90px;
+
+    &--active {
+      background-color: $participation-card-active-bg-color;
+      color: $participation-card-active-text-color;
     }
+  }
 }
