@@ -29,10 +29,10 @@ class ParticipantCard extends Component {
     }
 }
 
-ParticipantCard.prototypes = {
+ParticipantCard.propTypes = {
     name: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     active: PropTypes.bool
-}
+};
 
 export default ParticipantCard;

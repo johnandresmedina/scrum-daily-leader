@@ -15,9 +15,9 @@ class SearchComponent extends Component {
     }
 }
 
-SearchComponent.prototypes = {
+SearchComponent.propTypes = {
     onHandleModifyValue: PropTypes.func.isRequired,
     value: PropTypes.string
-}
+};
 
 export default SearchComponent;

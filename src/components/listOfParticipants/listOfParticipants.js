@@ -39,9 +39,9 @@ class ListOfParticipants extends Component {
     }
 }
 
-ListOfParticipants.prototypes = {
+ListOfParticipants.propTypes = {
     valueSeleted: PropTypes.string,
-    listParticipants: PropTypes.object.isRequired
-}
+    listParticipants: PropTypes.array.isRequired
+};
 
 export default ListOfParticipants;

@@ -7,4 +7,4 @@ const listOfParticipants = [
 
 module.exports = {
     listOfParticipants
-}
+};

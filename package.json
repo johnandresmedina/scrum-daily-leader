@@ -6,7 +6,6 @@
   "dependencies": {
     "autoprefixer": "7.1.6",
     "babel-core": "6.26.0",
-    "babel-eslint": "7.2.3",
     "babel-jest": "20.0.3",
     "babel-loader": "7.1.2",
     "babel-preset-react-app": "^3.1.1",
@@ -17,13 +16,7 @@
     "classnames": "^2.2.6",
     "dotenv": "4.0.0",
     "dotenv-expand": "4.2.0",
-    "eslint": "4.10.0",
-    "eslint-config-react-app": "^2.1.0",
     "eslint-loader": "1.9.0",
-    "eslint-plugin-flowtype": "2.39.1",
-    "eslint-plugin-import": "2.8.0",
-    "eslint-plugin-jsx-a11y": "5.1.1",
-    "eslint-plugin-react": "7.4.0",
     "extract-text-webpack-plugin": "3.0.2",
     "file-loader": "1.1.5",
     "fs-extra": "3.0.1",
@@ -49,6 +42,8 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
+    "eslint": "eslint src --color",
+    "sass-lint": "sass-lint -v -q -c .sass-lint.yml",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
@@ -98,9 +93,18 @@
     "extends": "react-app"
   },
   "devDependencies": {
-    "gh-pages": "^1.2.0",
+    "babel-eslint": "^7.2.3",
     "css-loader": "^0.28.7",
+    "eslint": "^4.19.1",
+    "eslint-config-react-app": "^2.1.0",
+    "eslint-plugin-flowtype": "^2.50.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jest": "^21.18.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.10.0",
+    "gh-pages": "^1.2.0",
     "node-sass": "^4.9.2",
+    "sass-lint": "^1.12.1",
     "sass-loader": "^7.0.3",
     "style-loader": "^0.19.0"
   }
