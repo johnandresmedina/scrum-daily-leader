@@ -18,7 +18,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      listOdParticipantsAvailable: JSON.parse(localStorage.getItem('listOfParticipants')),
+      listOfParticipantsAvailable: JSON.parse(localStorage.getItem('listOfParticipants')),
       participantSelected: null
     };
 
@@ -27,14 +27,14 @@ class App extends Component {
   }
 
   removeFromState(identification) {
-    const { listOdParticipantsAvailable } = this.state;
+    const { listOfParticipantsAvailable } = this.state;
 
-    remove(listOdParticipantsAvailable, participant => {
+    remove(listOfParticipantsAvailable, participant => {
       return isEqual(participant.index, identification);
     });
 
-    localStorage.setItem('listOfParticipants', JSON.stringify(listOdParticipantsAvailable));
-    this.setState({ listOdParticipantsAvailable });
+    localStorage.setItem('listOfParticipants', JSON.stringify(listOfParticipantsAvailable));
+    this.setState({ listOfParticipantsAvailable });
   }
 
   componentWillMount() {
@@ -48,16 +48,13 @@ class App extends Component {
     const list = JSON.parse(localStorage.getItem('listOfParticipants'));
     const valueRandom = random(0, list.length - 1);
     const participantSelected = list[valueRandom];
-    console.log('list', list);
-    console.log('participantSelected', participantSelected);
     this.removeFromState(list[valueRandom].index);
     this.setState({ participantSelected });
   }
 
   render() {
-    const { participantSelected, listOdParticipantsAvailable } = this.state;
+    const { participantSelected, listOfParticipantsAvailable } = this.state;
     const nameParticipantSeleted = isEqual(participantSelected, null) ? null : participantSelected.name;
-    console.log('participantSelected', participantSelected);
     return (
       <div className="app">
         <header className="app__header">
@@ -81,7 +78,7 @@ class App extends Component {
               </div>
             }
             <ListOfParticipants
-              listParticipants={listOdParticipantsAvailable}
+              listParticipants={listOfParticipantsAvailable}
               removeFromState={this.removeFromState}
               valueSeleted={nameParticipantSeleted} />
           </div>
