@@ -10,6 +10,7 @@ $participation-card-active-text-color: #fff;
   border-radius: 10px;
   margin: 0 -10px 25px;
   padding: 0 10px;
+  height: 120px;
 
   &__active {
     background-color: $participation-card-bg-color;
@@ -23,6 +24,10 @@ $participation-card-active-text-color: #fff;
 
   &__container-circle {
     margin-top: 10px;
+  }
+
+  &__container-text {
+      margin-top: 20px;
   }
 
   &__circle {
@@ -41,4 +46,10 @@ $participation-card-active-text-color: #fff;
       color: $participation-card-active-text-color;
     }
   }
+
+  &__button-remove {
+    position: absolute;
+    right: 10px;
+    bottom: 30px;
+}
 }
