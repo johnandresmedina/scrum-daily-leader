@@ -24,7 +24,15 @@ class App extends Component {
     };
   }
 
-  removeFromState = (identification) => {
+  componentDidMount() {
+    if (isEqual(localStorage.getItem('listOfParticipants'), null) ||
+      isEqual(localStorage.getItem('listOfParticipants'), [])) {
+        localStorage.setItem('listOfParticipants', JSON.stringify(listOfParticipants));
+        this.setState({ listOfParticipantsAvailable: JSON.parse(localStorage.getItem('listOfParticipants')) });
+    }
+  }
+
+  removeFromState(identification) {
     const { listOfParticipantsAvailable } = this.state;
 
     remove(listOfParticipantsAvailable, participant => {
@@ -35,14 +43,7 @@ class App extends Component {
     this.setState({ listOfParticipantsAvailable });
   }
 
-  componentWillMount() {
-    if (isEqual(localStorage.getItem('listOfParticipants'), 'null') ||
-      isEqual(localStorage.getItem('listOfParticipants'), '[]')) {
-      localStorage.setItem('listOfParticipants', JSON.stringify(listOfParticipants));
-    }
-  }
-
-  onClickRouletteButton = () => {
+  onClickRouletteButton() {
     const list = JSON.parse(localStorage.getItem('listOfParticipants'));
     const valueRandom = random(0, list.length - 1);
     const participantSelected = list[valueRandom];
@@ -75,10 +76,11 @@ class App extends Component {
                 </div>
               </div>
             }
+            { listOfParticipantsAvailable && 
             <ListOfParticipants
               listParticipants={listOfParticipantsAvailable}
               removeFromState={this.removeFromState}
-              valueSeleted={nameParticipantSeleted} />
+              valueSeleted={nameParticipantSeleted} /> }
           </div>
         </div>
       </div>
