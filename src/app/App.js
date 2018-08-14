@@ -21,7 +21,7 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    
+
     this.state = {
       listOfParticipantsAvailable: JSON.parse(localStorage.getItem('listOfParticipants')),
       participantSelected: null
@@ -84,7 +84,6 @@ class App extends Component {
                     name={participantSelected.name}
                     description={participantSelected.description}
                     active
-                    removeFromState={participantSelected}
                     participantSeleted
                   />
                 </div>
