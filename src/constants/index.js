@@ -1,3 +1,4 @@
+
 const listOfParticipants = [
     { index: 1, name: 'Alejandro', description: "La QC del equipo de UI" },
     { index: 2, name: 'Andres', description: "Andresito" },
@@ -16,6 +17,4 @@ const listOfParticipants = [
     { index: 15, name: 'Nacho', description: "El mejor UX también" }
 ];
 
-module.exports = {
-    listOfParticipants
-};
+export { listOfParticipants };
