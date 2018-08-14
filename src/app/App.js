@@ -32,7 +32,7 @@ class App extends Component {
     }
   }
 
-  removeFromState(identification) {
+  removeFromState = (identification) => {
     const { listOfParticipantsAvailable } = this.state;
 
     remove(listOfParticipantsAvailable, participant => {
@@ -43,7 +43,7 @@ class App extends Component {
     this.setState({ listOfParticipantsAvailable });
   }
 
-  onClickRouletteButton() {
+  onClickRouletteButton = () => {
     const list = JSON.parse(localStorage.getItem('listOfParticipants'));
     const valueRandom = random(0, list.length - 1);
     const participantSelected = list[valueRandom];
