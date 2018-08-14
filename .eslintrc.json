@@ -20,5 +20,6 @@
     ],
     "rules": {
         "semi": 2
-    }
+    },
+    "parser": "babel-eslint"
 }
