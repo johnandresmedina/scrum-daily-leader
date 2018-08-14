@@ -4,17 +4,16 @@ $participation-card-text-color: #000;
 $participation-card-circle-bg-color: #98b96b;
 $participation-card-active-bg-color: #f00;
 $participation-card-active-text-color: #fff;
+$participation-card--background-item: #ECECEC;
 
 .participant-card {
-  border: 1px solid $participation-card-border-color;
-  border-radius: 10px;
-  margin: 0 -10px 25px;
-  padding: 0 10px;
-  height: 120px;
+  margin-top: 10px;
+  text-align: center;
+  width: 100%;
 
-  &__active {
-    background-color: $participation-card-bg-color;
-    border-color: $participation-card-border-color;
+  &__name {
+    padding-left: 15px;
+    padding-top: 9px;
   }
 
   &__text {
@@ -23,11 +22,7 @@ $participation-card-active-text-color: #fff;
   }
 
   &__container-circle {
-    margin-top: 10px;
-  }
-
-  &__container-text {
-      margin-top: 20px;
+    margin-top: 3px;
   }
 
   &__circle {
@@ -35,11 +30,9 @@ $participation-card-active-text-color: #fff;
     border-radius: 50%;
     color: $participation-card-text-color;
     display: inline-block;
-    font-size: 50px;
-    height: 90px;
-    margin-top: 5px;
-    text-align: center;
-    width: 90px;
+    font-size: 20px;
+    height: 30px;
+    width: 30px;
 
     &--active {
       background-color: $participation-card-active-bg-color;
@@ -47,9 +40,8 @@ $participation-card-active-text-color: #fff;
     }
   }
 
-  &__button-remove {
-    position: absolute;
-    right: 10px;
-    bottom: 30px;
-}
+  &__container-inline {
+    display: inline-block;
+    width: 350px;
+  }
 }
