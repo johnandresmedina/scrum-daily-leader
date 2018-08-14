@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from '../assets/logo.svg';
 import './App.scss';
+import './App.override.scss';
 import random from 'lodash/random';
 import isEqual from 'lodash/isEqual';
 import remove from 'lodash/remove';
