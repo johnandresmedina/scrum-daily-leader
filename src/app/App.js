@@ -26,6 +26,14 @@ class App extends Component {
     this.removeFromState = this.removeFromState.bind(this);
   }
 
+  componentDidMount() {
+    if (isEqual(localStorage.getItem('listOfParticipants'), null) ||
+      isEqual(localStorage.getItem('listOfParticipants'), [])) {
+        localStorage.setItem('listOfParticipants', JSON.stringify(listOfParticipants));
+        this.setState({ listOfParticipantsAvailable: JSON.parse(localStorage.getItem('listOfParticipants')) });
+    }
+  }
+
   removeFromState(identification) {
     const { listOfParticipantsAvailable } = this.state;
 
@@ -35,13 +43,6 @@ class App extends Component {
 
     localStorage.setItem('listOfParticipants', JSON.stringify(listOfParticipantsAvailable));
     this.setState({ listOfParticipantsAvailable });
-  }
-
-  componentWillMount() {
-    if (isEqual(localStorage.getItem('listOfParticipants'), 'null') ||
-      isEqual(localStorage.getItem('listOfParticipants'), '[]')) {
-      localStorage.setItem('listOfParticipants', JSON.stringify(listOfParticipants));
-    }
   }
 
   onClickRouletteButton() {
@@ -77,10 +78,11 @@ class App extends Component {
                 </div>
               </div>
             }
+            { listOfParticipantsAvailable && 
             <ListOfParticipants
               listParticipants={listOfParticipantsAvailable}
               removeFromState={this.removeFromState}
-              valueSeleted={nameParticipantSeleted} />
+              valueSeleted={nameParticipantSeleted} /> }
           </div>
         </div>
       </div>
