@@ -13,7 +13,7 @@ class ListOfParticipants extends Component {
     }
 
     mapEachParticipant(participant, index) {
-        const { valueSeleted, removeFromState } = this.props;
+        const { valueSeleted } = this.props;
         const active = isEqual(valueSeleted, participant.name);
 
         return (
@@ -23,7 +23,6 @@ class ListOfParticipants extends Component {
                     name={participant.name}
                     description={participant.description}
                     active={active}
-                    removeFromState={removeFromState}
                 />
             </div>
         );
@@ -43,8 +42,7 @@ class ListOfParticipants extends Component {
 
 ListOfParticipants.propTypes = {
     valueSeleted: PropTypes.string,
-    listParticipants: PropTypes.array.isRequired,
-    removeFromState: PropTypes.func.isRequired
+    listParticipants: PropTypes.array.isRequired
 };
 
 export default ListOfParticipants;

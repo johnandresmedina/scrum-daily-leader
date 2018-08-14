@@ -10,6 +10,10 @@ import SearchComponent from '../components/searchComponent/searchComponent';
 import ListOfParticipants from '../components/listOfParticipants/listOfParticipants';
 import ParticipantCard from '../components/listOfParticipants/participantCard/participantCard';
 
+//material-components
+import Button from '@material-ui/core/Button';
+import DeleteIcon from '@material-ui/icons/Delete';
+
 //Constants
 import { listOfParticipants } from '../constants/index';
 
@@ -27,8 +31,8 @@ class App extends Component {
   componentDidMount() {
     if (isEqual(localStorage.getItem('listOfParticipants'), null) ||
       isEqual(localStorage.getItem('listOfParticipants'), [])) {
-        localStorage.setItem('listOfParticipants', JSON.stringify(listOfParticipants));
-        this.setState({ listOfParticipantsAvailable: JSON.parse(localStorage.getItem('listOfParticipants')) });
+      localStorage.setItem('listOfParticipants', JSON.stringify(listOfParticipants));
+      this.setState({ listOfParticipantsAvailable: JSON.parse(localStorage.getItem('listOfParticipants')) });
     }
   }
 
@@ -40,14 +44,23 @@ class App extends Component {
     });
 
     localStorage.setItem('listOfParticipants', JSON.stringify(listOfParticipantsAvailable));
-    this.setState({ listOfParticipantsAvailable });
+    this.setState({
+      listOfParticipantsAvailable,
+      participantSelected: null
+    });
+  }
+
+  UNSAFE_componentWillMount() {
+    if (isEqual(localStorage.getItem('listOfParticipants'), 'null') ||
+      isEqual(localStorage.getItem('listOfParticipants'), '[]')) {
+      localStorage.setItem('listOfParticipants', JSON.stringify(listOfParticipants));
+    }
   }
 
   onClickRouletteButton = () => {
     const list = JSON.parse(localStorage.getItem('listOfParticipants'));
     const valueRandom = random(0, list.length - 1);
     const participantSelected = list[valueRandom];
-    this.removeFromState(list[valueRandom].index);
     this.setState({ participantSelected });
   }
 
@@ -65,22 +78,28 @@ class App extends Component {
             <SearchComponent onHandleModifyValue={this.onClickRouletteButton} />
             {!isEqual(participantSelected, null) &&
               <div className="col-md-12 app__container-participant">
-                <div className="col-md-3 app__participant">
+                <div className="app__participant">
                   <ParticipantCard
                     identification={participantSelected.index}
                     name={participantSelected.name}
                     description={participantSelected.description}
                     active
                     removeFromState={participantSelected}
+                    participantSeleted
                   />
+                </div>
+                <div className="app__container-remove-button">
+                  <Button variant="contained" color="secondary" className="app__remove-button" aria-label="delete" onClick={() => this.removeFromState(participantSelected.index)}>
+                    Remove
+                    <DeleteIcon />
+                  </Button>
                 </div>
               </div>
             }
-            { listOfParticipantsAvailable && 
-            <ListOfParticipants
-              listParticipants={listOfParticipantsAvailable}
-              removeFromState={this.removeFromState}
-              valueSeleted={nameParticipantSeleted} /> }
+            {listOfParticipantsAvailable &&
+              <ListOfParticipants
+                listParticipants={listOfParticipantsAvailable}
+                valueSeleted={nameParticipantSeleted} />}
           </div>
         </div>
       </div>

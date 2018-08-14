@@ -1,3 +1,4 @@
+
 $header-bg-color: #222;
 $header-text-color: #fff;
 
@@ -35,6 +36,15 @@ $header-text-color: #fff;
 
   &__participant {
     display: inline-block;
+  }
+
+  &__container-remove-button {
+    display: inline-block;
+  }
+
+  &__remove-button {
+    margin-left: 15px !important;
+    margin-top: -45px !important;
   }
 
 }

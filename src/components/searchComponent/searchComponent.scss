@@ -1,4 +1,8 @@
 .search-component {
   display: flex;
   margin-top: 10px;
+
+  &__input {
+    margin-right: 10px;
+  }
 }

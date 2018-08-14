@@ -14,7 +14,7 @@ const listOfParticipants = [
     { index: 12, name: 'Fabricio', description: "El piñin" },
     { index: 13, name: 'Leo', description: "El chico automation" },
     { index: 14, name: 'Nestor', description: "El mejor UX" },
-    { index: 15, name: 'Nacho', description: "El mejor UX también" }
+    { index: 15, name: 'Nacho', description: "El mejor VD" }
 ];
 
 export { listOfParticipants };
