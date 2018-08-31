@@ -92,7 +92,13 @@
       "react-app"
     ],
     "plugins": [
-      "transform-class-properties"
+      "transform-class-properties",
+      [
+        "transform-es2015-modules-commonjs-simple",
+        {
+          "noMangle": true
+        }
+      ]
     ]
   },
   "eslintConfig": {
@@ -101,6 +107,7 @@
   "devDependencies": {
     "babel-eslint": "^7.2.3",
     "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-es2015-modules-commonjs-simple": "^6.7.4",
     "css-loader": "^0.28.7",
     "eslint": "^4.19.1",
     "eslint-config-react-app": "^2.1.0",
