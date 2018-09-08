@@ -4,6 +4,7 @@
         "node": true
     },
     "extends": [
+        "react-app",
         "eslint:recommended",
         "plugin:react/recommended",
         "plugin:jest/recommended"
