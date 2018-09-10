@@ -13,12 +13,9 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 class ParticipantCard extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         const { name, description, active, participantSeleted } = this.props;
+
         const classDivContainer = classnames({
             'participant-card__container-inline': participantSeleted
         });
