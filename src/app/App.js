@@ -1,10 +1,13 @@
-import React, { Component } from 'react';
-import logo from '../assets/logo.svg';
 import './App.scss';
 import './App.override.scss';
-import random from 'lodash/random';
+import logo from '../assets/logo.svg';
+
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import isEqual from 'lodash/isEqual';
-import remove from 'lodash/remove';
+import { connect } from 'react-redux';
+import { getParticipantList, setRandomParticipant, removeParticipant } from '../actions/participants';
 
 //Components
 import SearchComponent from '../components/searchComponent/searchComponent';
@@ -15,52 +18,25 @@ import ParticipantCard from '../components/listOfParticipants/participantCard/pa
 import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
 
-//Constants
-import { listOfParticipants } from '../constants/index';
-
 class App extends Component {
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            listOfParticipantsAvailable: JSON.parse(localStorage.getItem('listOfParticipants')),
-            participantSelected: null
-        };
-    }
-
     componentDidMount() {
-        if (isEqual(localStorage.getItem('listOfParticipants'), null) ||
-            isEqual(localStorage.getItem('listOfParticipants'), [])) {
-            localStorage.setItem('listOfParticipants', JSON.stringify(listOfParticipants));
-            this.setState({ listOfParticipantsAvailable: JSON.parse(localStorage.getItem('listOfParticipants')) });
-        }
-    }
-
-    removeFromState = (identification) => {
-        const { listOfParticipantsAvailable } = this.state;
-
-        remove(listOfParticipantsAvailable, participant => {
-            return isEqual(participant.index, identification);
-        });
-
-        localStorage.setItem('listOfParticipants', JSON.stringify(listOfParticipantsAvailable));
-        this.setState({
-            listOfParticipantsAvailable,
-            participantSelected: null
-        });
+        this.props.getParticipantList();
     }
 
     onClickRouletteButton = () => {
-        const list = JSON.parse(localStorage.getItem('listOfParticipants'));
-        const valueRandom = random(0, list.length - 1);
-        const participantSelected = list[valueRandom];
-        this.setState({ participantSelected });
+        this.props.setRandomParticipant();
+    }
+
+    removeParticipant = (index) => {
+        this.props.removeParticipant(index);
     }
 
     render() {
-        const { participantSelected, listOfParticipantsAvailable } = this.state;
-        const nameParticipantSeleted = isEqual(participantSelected, null) ? null : participantSelected.name;
+        const { listOfParticipants, selectedParticipant } = this.props;
+
+        const nameSelectedParticipant = isEqual(selectedParticipant, null) ? null : selectedParticipant.name;
+
         return (
             <div className="app">
                 <header className="app__header">
@@ -70,13 +46,13 @@ class App extends Component {
                 <div className="row app__container-cols" >
                     <div className="col-md-12">
                         <SearchComponent onHandleModifyValue={this.onClickRouletteButton} />
-                        {!isEqual(participantSelected, null) &&
+                        {!isEqual(selectedParticipant, null) &&
                             <div className="col-md-12 app__container-participant">
                                 <div className="app__participant">
                                     <ParticipantCard
-                                        identification={participantSelected.index}
-                                        name={participantSelected.name}
-                                        description={participantSelected.description}
+                                        identification={selectedParticipant.index}
+                                        name={selectedParticipant.name}
+                                        description={selectedParticipant.description}
                                         active
                                         participantSeleted
                                     />
@@ -87,17 +63,17 @@ class App extends Component {
                                         color="secondary"
                                         className="app__remove-button"
                                         aria-label="delete"
-                                        onClick={() => this.removeFromState(participantSelected.index)}>
+                                        onClick={() => this.removeParticipant(selectedParticipant.index)}>
                                         Remove
                                         <DeleteIcon />
                                     </Button>
                                 </div>
                             </div>
                         }
-                        {listOfParticipantsAvailable &&
+                        {listOfParticipants &&
                             <ListOfParticipants
-                                listParticipants={listOfParticipantsAvailable}
-                                valueSeleted={nameParticipantSeleted} />}
+                                listOfParticipants={listOfParticipants}
+                                valueSeleted={nameSelectedParticipant} />}
                     </div>
                 </div>
             </div>
@@ -105,4 +81,25 @@ class App extends Component {
     }
 }
 
-export default App;
+App.propTypes = {
+    getParticipantList: PropTypes.func.isRequired,
+    setRandomParticipant: PropTypes.func.isRequired,
+    removeParticipant: PropTypes.func.isRequired,
+    listOfParticipants: PropTypes.array.isRequired,
+    selectedParticipant: PropTypes.object
+};
+
+App.defaultProps = {
+    selectedParticipant: null
+};
+
+export default connect(
+    state => ({
+        listOfParticipants: state.participants.listOfParticipants,
+        selectedParticipant: state.participants.selectedParticipant
+    }),
+    dispatch => ({
+        getParticipantList: () => dispatch(getParticipantList()),
+        setRandomParticipant: () => dispatch(setRandomParticipant()),
+        removeParticipant: (index) => dispatch(removeParticipant(index))
+    }))(App);

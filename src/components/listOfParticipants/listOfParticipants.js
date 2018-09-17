@@ -1,18 +1,16 @@
+import './listOfParticipants.scss';
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './listOfParticipants.scss';
+
 import isEqual from 'lodash/isEqual';
+
+//Components
 import ParticipantCard from './participantCard/participantCard';
 
 class ListOfParticipants extends Component {
 
-    constructor(props) {
-        super(props);
-
-        this.mapEachParticipant = this.mapEachParticipant.bind(this);
-    }
-
-    mapEachParticipant(participant, index) {
+    mapEachParticipant = (participant, index) => {
         const { valueSeleted } = this.props;
         const active = isEqual(valueSeleted, participant.name);
 
@@ -29,11 +27,11 @@ class ListOfParticipants extends Component {
     }
 
     render() {
-        const { listParticipants } = this.props;
+        const { listOfParticipants } = this.props;
         return (
             <div className="list-of-participants">
                 <div className="row">
-                    {listParticipants.map((participant, key) => this.mapEachParticipant(participant, key))}
+                    {listOfParticipants.map((participant, key) => this.mapEachParticipant(participant, key))}
                 </div>
             </div>
         );
@@ -42,7 +40,7 @@ class ListOfParticipants extends Component {
 
 ListOfParticipants.propTypes = {
     valueSeleted: PropTypes.string,
-    listParticipants: PropTypes.array.isRequired
+    listOfParticipants: PropTypes.array.isRequired
 };
 
 export default ListOfParticipants;
