@@ -1,5 +1,5 @@
 import actionTypes from '../constants/actionTypes';
-import { listOfParticipants } from '../constants';
+import listOfParticipants from '../constants/data';
 import random from 'lodash/random';
 
 const fetchParticipantList = () => ({
@@ -45,4 +45,33 @@ const removeParticipant = (index) => (dispatch, getState) => {
     dispatch(removeParticipantSuccess(newParticipantList));
 };
 
-export { getParticipantList, setRandomParticipant, removeParticipant };
+const updateParticipantList = (listOfParticipants) => ({
+    type: actionTypes.UPDATE_PARTICIPANT_LIST,
+    payload: { listOfParticipants }
+});
+
+const updateParticipantListError = (error) => ({
+    type: actionTypes.UPDATE_PARTICIPANT_LIST,
+    payload: { error }
+});
+
+const fileUpload = (file) => (dispatch, getState) => {
+
+    if (file) {
+        const reader = new FileReader();
+
+        reader.onload = (e) => {
+            try {
+                const result = JSON.parse(e.target.result);
+                dispatch(updateParticipantList(result));
+            }
+            catch (ex) {
+                dispatch(updateParticipantListError(ex));
+            }
+        };
+
+        reader.readAsText(file);
+    }
+};
+
+export { getParticipantList, setRandomParticipant, removeParticipant, fileUpload };

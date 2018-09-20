@@ -7,33 +7,21 @@ import PropTypes from 'prop-types';
 
 import isEqual from 'lodash/isEqual';
 import { connect } from 'react-redux';
-import { getParticipantList, setRandomParticipant, removeParticipant } from '../actions/participants';
+import { setRandomParticipant, removeParticipant, fileUpload } from '../actions/participants';
 
 //Components
 import SearchComponent from '../components/searchComponent/searchComponent';
 import ListOfParticipants from '../components/listOfParticipants/listOfParticipants';
-import ParticipantCard from '../components/listOfParticipants/participantCard/participantCard';
-
-//material-components
-import Button from '@material-ui/core/Button';
-import DeleteIcon from '@material-ui/icons/Delete';
+import SelectedCard from '../components/selectedCard/selectedCard';
+import UploadFile from '../components/uploadFile/uploadFile';
 
 class App extends Component {
-
-    componentDidMount() {
-        this.props.getParticipantList();
-    }
-
     onClickRouletteButton = () => {
         this.props.setRandomParticipant();
     }
 
-    removeParticipant = (index) => {
-        this.props.removeParticipant(index);
-    }
-
     render() {
-        const { listOfParticipants, selectedParticipant } = this.props;
+        const { listOfParticipants, selectedParticipant, removeParticipant, fileUpload } = this.props;
 
         const nameSelectedParticipant = isEqual(selectedParticipant, null) ? null : selectedParticipant.name;
 
@@ -45,30 +33,13 @@ class App extends Component {
                 </header>
                 <div className="row app__container-cols" >
                     <div className="col-md-12">
+                        <UploadFile onFileUpload={fileUpload} />
                         <SearchComponent onHandleModifyValue={this.onClickRouletteButton} />
                         {!isEqual(selectedParticipant, null) &&
-                            <div className="col-md-12 app__container-participant">
-                                <div className="app__participant">
-                                    <ParticipantCard
-                                        identification={selectedParticipant.index}
-                                        name={selectedParticipant.name}
-                                        description={selectedParticipant.description}
-                                        active
-                                        participantSeleted
-                                    />
-                                </div>
-                                <div className="app__container-remove-button">
-                                    <Button
-                                        variant="contained"
-                                        color="secondary"
-                                        className="app__remove-button"
-                                        aria-label="delete"
-                                        onClick={() => this.removeParticipant(selectedParticipant.index)}>
-                                        Remove
-                                        <DeleteIcon />
-                                    </Button>
-                                </div>
-                            </div>
+                            <SelectedCard
+                                selectedParticipant={selectedParticipant}
+                                removeParticipant={removeParticipant}
+                            />
                         }
                         {listOfParticipants &&
                             <ListOfParticipants
@@ -82,7 +53,7 @@ class App extends Component {
 }
 
 App.propTypes = {
-    getParticipantList: PropTypes.func.isRequired,
+    fileUpload: PropTypes.func.isRequired,
     setRandomParticipant: PropTypes.func.isRequired,
     removeParticipant: PropTypes.func.isRequired,
     listOfParticipants: PropTypes.array.isRequired,
@@ -99,7 +70,7 @@ export default connect(
         selectedParticipant: state.participants.selectedParticipant
     }),
     dispatch => ({
-        getParticipantList: () => dispatch(getParticipantList()),
+        fileUpload: (file) => dispatch(fileUpload(file)),
         setRandomParticipant: () => dispatch(setRandomParticipant()),
         removeParticipant: (index) => dispatch(removeParticipant(index))
     }))(App);

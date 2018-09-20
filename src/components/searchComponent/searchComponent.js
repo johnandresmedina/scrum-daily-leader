@@ -12,7 +12,6 @@ class SearchComponent extends Component {
         const { onHandleModifyValue } = this.props;
         return (
             <div className="search-component">
-                <input className="form-control search-component__input" type="text" placeholder="Ingrese un criterio de busqueda" />
                 <Button variant="contained" color="primary" onClick={onHandleModifyValue}>
                     Roulette
                     <AutorenewIcon />
@@ -23,8 +22,7 @@ class SearchComponent extends Component {
 }
 
 SearchComponent.propTypes = {
-    onHandleModifyValue: PropTypes.func.isRequired,
-    value: PropTypes.string
+    onHandleModifyValue: PropTypes.func.isRequired
 };
 
 export default SearchComponent;

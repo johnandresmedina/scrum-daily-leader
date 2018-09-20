@@ -3,7 +3,8 @@ import actionTypes from '../constants/actionTypes';
 const initialState = {
     fetching: false,
     listOfParticipants: [],
-    selectedParticipant: null
+    selectedParticipant: null,
+    error: null
 };
 
 const participantsReducer = (state = initialState, action) => {
@@ -29,6 +30,18 @@ const participantsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 listOfParticipants: action.payload.listOfParticipants,
+                selectedParticipant: null
+            };
+        case actionTypes.UPDATE_PARTICIPANT_LIST:
+            return {
+                ...state,
+                listOfParticipants: action.payload.listOfParticipants,
+                selectedParticipant: null
+            };
+        case actionTypes.UPDATE_PARTICIPANT_LIST_ERROR:
+            return {
+                ...state,
+                error: action.payload.error,
                 selectedParticipant: null
             };
         default:
