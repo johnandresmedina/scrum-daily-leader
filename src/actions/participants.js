@@ -1,25 +1,7 @@
 import actionTypes from '../constants/actionTypes';
-import listOfParticipants from '../constants/data';
 import random from 'lodash/random';
 
-const fetchParticipantList = () => ({
-    type: actionTypes.FETCH_PARTICIPANT_LIST
-});
-
-const getParticipantListSuccess = (listOfParticipants) => ({
-    type: actionTypes.GET_PARTICIPANT_LIST_SUCCESS,
-    payload: { listOfParticipants }
-});
-
-const getParticipantList = () => (dispatch, getState) => {
-
-    if (getState().participants.listOfParticipants.length <= 0) {
-        dispatch(fetchParticipantList());
-        dispatch(getParticipantListSuccess(listOfParticipants));
-    }
-};
-
-const setSelectedParticipant = (selectedParticipant) => ({
+const setSelectedParticipant = selectedParticipant => ({
     type: actionTypes.SET_SELECTED_PARTICIPANT,
     payload: { selectedParticipant }
 });
@@ -32,12 +14,12 @@ const setRandomParticipant = () => (dispatch, getState) => {
     dispatch(setSelectedParticipant(selectedParticipant));
 };
 
-const removeParticipantSuccess = (listOfParticipants) => ({
+const removeParticipantSuccess = listOfParticipants => ({
     type: actionTypes.REMOVE_PARTICIPANT_LIST_SUCCESS,
     payload: { listOfParticipants }
 });
 
-const removeParticipant = (index) => (dispatch, getState) => {
+const removeParticipant = index => (dispatch, getState) => {
 
     const participantList = getState().participants.listOfParticipants;
     const newParticipantList = participantList.filter(participant => participant.index !== index);
@@ -45,27 +27,26 @@ const removeParticipant = (index) => (dispatch, getState) => {
     dispatch(removeParticipantSuccess(newParticipantList));
 };
 
-const updateParticipantList = (listOfParticipants) => ({
+const updateParticipantList = listOfParticipants => ({
     type: actionTypes.UPDATE_PARTICIPANT_LIST,
     payload: { listOfParticipants }
 });
 
-const updateParticipantListError = (error) => ({
+const updateParticipantListError = error => ({
     type: actionTypes.UPDATE_PARTICIPANT_LIST,
     payload: { error }
 });
 
-const fileUpload = (file) => (dispatch, getState) => {
+const fileUpload = file => dispatch => {
 
     if (file) {
         const reader = new FileReader();
 
-        reader.onload = (e) => {
+        reader.onload = event => {
             try {
-                const result = JSON.parse(e.target.result);
+                const result = JSON.parse(event.target.result);
                 dispatch(updateParticipantList(result));
-            }
-            catch (ex) {
+            } catch (ex) {
                 dispatch(updateParticipantListError(ex));
             }
         };
@@ -74,4 +55,4 @@ const fileUpload = (file) => (dispatch, getState) => {
     }
 };
 
-export { getParticipantList, setRandomParticipant, removeParticipant, fileUpload };
+export { setRandomParticipant, removeParticipant, fileUpload };
