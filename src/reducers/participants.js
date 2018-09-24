@@ -10,17 +10,6 @@ const initialState = {
 const participantsReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case actionTypes.FETCH_PARTICIPANT_LIST:
-            return {
-                ...state,
-                fetching: true
-            };
-        case actionTypes.GET_PARTICIPANT_LIST_SUCCESS:
-            return {
-                ...state,
-                fetching: false,
-                listOfParticipants: action.payload.listOfParticipants
-            };
         case actionTypes.SET_SELECTED_PARTICIPANT:
             return {
                 ...state,
