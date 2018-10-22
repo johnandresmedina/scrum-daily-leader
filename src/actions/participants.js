@@ -1,41 +1,29 @@
+import { createAction } from 'redux-actions';
 import actionTypes from '../constants/actionTypes';
 import random from 'lodash/random';
 
-const setSelectedParticipant = selectedParticipant => ({
-    type: actionTypes.SET_SELECTED_PARTICIPANT,
-    payload: { selectedParticipant }
-});
+const setSelectedParticipant = createAction(actionTypes.SET_SELECTED_PARTICIPANT);
 
 const setRandomParticipant = () => (dispatch, getState) => {
 
     const participantList = getState().participants.listOfParticipants;
     const selectedParticipant = participantList[random(0, participantList.length - 1)];
 
-    dispatch(setSelectedParticipant(selectedParticipant));
+    dispatch(setSelectedParticipant({selectedParticipant}));
 };
 
-const removeParticipantSuccess = listOfParticipants => ({
-    type: actionTypes.REMOVE_PARTICIPANT_LIST_SUCCESS,
-    payload: { listOfParticipants }
-});
+const removeParticipantSuccess = createAction(actionTypes.REMOVE_PARTICIPANT_LIST_SUCCESS);
 
 const removeParticipant = index => (dispatch, getState) => {
 
     const participantList = getState().participants.listOfParticipants;
-    const newParticipantList = participantList.filter(participant => participant.index !== index);
+    const listOfParticipants = participantList.filter(participant => participant.index !== index);
 
-    dispatch(removeParticipantSuccess(newParticipantList));
+    dispatch(removeParticipantSuccess({listOfParticipants}));
 };
 
-const updateParticipantList = listOfParticipants => ({
-    type: actionTypes.UPDATE_PARTICIPANT_LIST,
-    payload: { listOfParticipants }
-});
-
-const updateParticipantListError = error => ({
-    type: actionTypes.UPDATE_PARTICIPANT_LIST,
-    payload: { error }
-});
+const updateParticipantList = createAction(actionTypes.UPDATE_PARTICIPANT_LIST);
+const updateParticipantListError = createAction(actionTypes.UPDATE_PARTICIPANT_LIST_ERROR);
 
 const fileUpload = file => dispatch => {
 
@@ -44,10 +32,10 @@ const fileUpload = file => dispatch => {
 
         reader.onload = event => {
             try {
-                const result = JSON.parse(event.target.result);
-                dispatch(updateParticipantList(result));
-            } catch (ex) {
-                dispatch(updateParticipantListError(ex));
+                const listOfParticipants = JSON.parse(event.target.result);
+                dispatch(updateParticipantList({listOfParticipants}));
+            } catch (error) {
+                dispatch(updateParticipantListError({error}));
             }
         };
 
