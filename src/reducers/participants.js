@@ -1,5 +1,5 @@
 import actionTypes from '../constants/actionTypes';
-import { handleActions } from 'redux-actions';
+import { handleActions, combineActions } from 'redux-actions';
 
 const initialState = {
     fetching: false,
@@ -15,17 +15,13 @@ const participantsReducer = handleActions(
             selectedParticipant: action.payload.selectedParticipant
         }),
 
-        [actionTypes.REMOVE_PARTICIPANT_LIST_SUCCESS]: (state = initialState, action) => ({
-            ...state,
-            listOfParticipants: action.payload.listOfParticipants,
-            selectedParticipant: null
-        }),
-
-        [actionTypes.UPDATE_PARTICIPANT_LIST]: (state = initialState, action) => ({
-            ...state,
-            listOfParticipants: action.payload.listOfParticipants,
-            selectedParticipant: null
-        }),
+        [combineActions(
+            actionTypes.REMOVE_PARTICIPANT_LIST_SUCCESS,
+            actionTypes.UPDATE_PARTICIPANT_LIST)]: (state = initialState, action) => ({
+                ...state,
+                listOfParticipants: action.payload.listOfParticipants,
+                selectedParticipant: null
+            }),
 
         [actionTypes.UPDATE_PARTICIPANT_LIST_ERROR]: (state = initialState, action) => ({
             ...state,
