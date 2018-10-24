@@ -1,29 +1,29 @@
-import { createAction } from 'redux-actions';
+import { createActions } from 'redux-actions';
 import actionTypes from '../constants/actionTypes';
 import random from 'lodash/random';
 
-const setSelectedParticipant = createAction(actionTypes.SET_SELECTED_PARTICIPANT);
+const actions = createActions({
+    [actionTypes.SET_SELECTED_PARTICIPANT]: (selectedParticipant) => ({ selectedParticipant }),
+    [actionTypes.REMOVE_PARTICIPANT_LIST_SUCCESS]: (listOfParticipants) => (listOfParticipants),
+    [actionTypes.UPDATE_PARTICIPANT_LIST]: (listOfParticipants) => (listOfParticipants),
+    [actionTypes.UPDATE_PARTICIPANT_LIST_ERROR]: (error) => ({ error })
+});
 
 const setRandomParticipant = () => (dispatch, getState) => {
 
     const participantList = getState().participants.listOfParticipants;
     const selectedParticipant = participantList[random(0, participantList.length - 1)];
 
-    dispatch(setSelectedParticipant({selectedParticipant}));
+    dispatch(actions.setSelectedParticipant(selectedParticipant));
 };
-
-const removeParticipantSuccess = createAction(actionTypes.REMOVE_PARTICIPANT_LIST_SUCCESS);
 
 const removeParticipant = index => (dispatch, getState) => {
 
     const participantList = getState().participants.listOfParticipants;
     const listOfParticipants = participantList.filter(participant => participant.index !== index);
 
-    dispatch(removeParticipantSuccess({listOfParticipants}));
+    dispatch(actions.removeParticipantListSuccess({ listOfParticipants }));
 };
-
-const updateParticipantList = createAction(actionTypes.UPDATE_PARTICIPANT_LIST);
-const updateParticipantListError = createAction(actionTypes.UPDATE_PARTICIPANT_LIST_ERROR);
 
 const fileUpload = file => dispatch => {
 
@@ -33,9 +33,9 @@ const fileUpload = file => dispatch => {
         reader.onload = event => {
             try {
                 const listOfParticipants = JSON.parse(event.target.result);
-                dispatch(updateParticipantList({listOfParticipants}));
+                dispatch(actions.updateParticipantList({ listOfParticipants }));
             } catch (error) {
-                dispatch(updateParticipantListError({error}));
+                dispatch(actions.updateParticipantListError({ error }));
             }
         };
 
