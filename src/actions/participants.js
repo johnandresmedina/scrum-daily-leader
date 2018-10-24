@@ -9,7 +9,7 @@ const setRandomParticipant = () => (dispatch, getState) => {
     const participantList = getState().participants.listOfParticipants;
     const selectedParticipant = participantList[random(0, participantList.length - 1)];
 
-    dispatch(setSelectedParticipant({selectedParticipant}));
+    dispatch(setSelectedParticipant({ selectedParticipant }));
 };
 
 const removeParticipantSuccess = createAction(actionTypes.REMOVE_PARTICIPANT_LIST_SUCCESS);
@@ -19,7 +19,7 @@ const removeParticipant = index => (dispatch, getState) => {
     const participantList = getState().participants.listOfParticipants;
     const listOfParticipants = participantList.filter(participant => participant.index !== index);
 
-    dispatch(removeParticipantSuccess({listOfParticipants}));
+    dispatch(removeParticipantSuccess({ listOfParticipants }));
 };
 
 const updateParticipantList = createAction(actionTypes.UPDATE_PARTICIPANT_LIST);
@@ -33,9 +33,9 @@ const fileUpload = file => dispatch => {
         reader.onload = event => {
             try {
                 const listOfParticipants = JSON.parse(event.target.result);
-                dispatch(updateParticipantList({listOfParticipants}));
+                dispatch(updateParticipantList({ listOfParticipants }));
             } catch (error) {
-                dispatch(updateParticipantListError({error}));
+                dispatch(updateParticipantListError({ error }));
             }
         };
 
