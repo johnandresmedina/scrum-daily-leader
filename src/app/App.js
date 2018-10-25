@@ -56,7 +56,7 @@ App.propTypes = {
     fileUpload: PropTypes.func.isRequired,
     setRandomParticipant: PropTypes.func.isRequired,
     removeParticipant: PropTypes.func.isRequired,
-    listOfParticipants: PropTypes.array.isRequired,
+    listOfParticipants: PropTypes.array,
     selectedParticipant: PropTypes.object
 };
 
