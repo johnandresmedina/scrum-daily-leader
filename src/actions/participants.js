@@ -43,4 +43,4 @@ const fileUpload = file => dispatch => {
     }
 };
 
-export { setRandomParticipant, removeParticipant, fileUpload };
+export { setRandomParticipant, removeParticipant, fileUpload, actions };
