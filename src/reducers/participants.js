@@ -1,4 +1,4 @@
-import actionTypes from '../constants/actionTypes';
+import { actions } from '../actions/participants';
 import { handleActions, combineActions } from 'redux-actions';
 
 const initialState = {
@@ -10,26 +10,26 @@ const initialState = {
 
 const participantsReducer = handleActions(
     {
-        [actionTypes.SET_SELECTED_PARTICIPANT]: (state = initialState, action) => ({
+        [actions.setSelectedParticipant]: (state, action) => ({
             ...state,
             selectedParticipant: action.payload.selectedParticipant
         }),
 
         [combineActions(
-            actionTypes.REMOVE_PARTICIPANT_LIST_SUCCESS,
-            actionTypes.UPDATE_PARTICIPANT_LIST)]: (state = initialState, action) => ({
+            actions.removeParticipantListSuccess,
+            actions.updateParticipantList)]: (state, action) => ({
                 ...state,
                 listOfParticipants: action.payload.listOfParticipants,
                 selectedParticipant: null
             }),
 
-        [actionTypes.UPDATE_PARTICIPANT_LIST_ERROR]: (state = initialState, action) => ({
+        [actions.updateParticipantListError]: (state, action) => ({
             ...state,
             error: action.payload.error,
             selectedParticipant: null
         })
     },
-    { state: initialState }
+    initialState
 );
 
 export default participantsReducer;
