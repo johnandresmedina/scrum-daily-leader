@@ -69,8 +69,8 @@ export default connect(
         listOfParticipants: state.participants.listOfParticipants,
         selectedParticipant: state.participants.selectedParticipant
     }),
-    dispatch => ({
-        fileUpload: (file) => dispatch(fileUpload(file)),
-        setRandomParticipant: () => dispatch(setRandomParticipant()),
-        removeParticipant: (index) => dispatch(removeParticipant(index))
-    }))(App);
+    {
+        fileUpload: fileUpload,
+        setRandomParticipant: setRandomParticipant,
+        removeParticipant: removeParticipant
+    })(App);
