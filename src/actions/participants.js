@@ -12,15 +12,21 @@ const actions = createActions(
 const setRandomParticipant = () => (dispatch, getState) => {
 
     const participantList = getState().participants.listOfParticipants;
-    const selectedParticipant = participantList[random(0, participantList.length - 1)];
+    const index = random(0, participantList.length - 1);
+    const selectedParticipant = { ...participantList[index], index };
 
     dispatch(actions.setSelectedParticipant({ selectedParticipant }));
 };
 
 const removeParticipant = index => (dispatch, getState) => {
 
-    const participantList = getState().participants.listOfParticipants;
-    const listOfParticipants = participantList.filter(participant => participant.index !== index);
+    const listOfParticipants = getState().participants.listOfParticipants.slice();
+
+    if (index === 0) {
+        listOfParticipants.shift();
+    } else {
+        listOfParticipants.splice(index, 1);
+    }
 
     dispatch(actions.removeParticipantListSuccess({ listOfParticipants }));
 };
@@ -43,4 +49,13 @@ const fileUpload = file => dispatch => {
     }
 };
 
-export { setRandomParticipant, removeParticipant, fileUpload, actions };
+const loadList = list => dispatch => {
+    let listOfParticipants = [];
+
+    if (list !== '') {
+        list.split(',').trim().map(p => listOfParticipants.push({ name: p }));
+        dispatch(actions.updateParticipantList({ listOfParticipants }));
+    }
+};
+
+export { setRandomParticipant, removeParticipant, fileUpload, loadList, actions };

@@ -7,11 +7,12 @@ import PropTypes from 'prop-types';
 
 import isEqual from 'lodash/isEqual';
 import { connect } from 'react-redux';
-import { setRandomParticipant, removeParticipant, fileUpload } from '../actions/participants';
+import { setRandomParticipant, removeParticipant, fileUpload, loadList } from '../actions/participants';
 
 //Components
 import SearchComponent from '../components/searchComponent/searchComponent';
 import ListOfParticipants from '../components/listOfParticipants/listOfParticipants';
+import LoadList from '../components/loadList/loadList';
 import SelectedCard from '../components/selectedCard/selectedCard';
 import UploadFile from '../components/uploadFile/uploadFile';
 
@@ -21,7 +22,7 @@ class App extends Component {
     }
 
     render() {
-        const { listOfParticipants, selectedParticipant, removeParticipant, fileUpload } = this.props;
+        const { listOfParticipants, selectedParticipant, removeParticipant, fileUpload, loadList } = this.props;
 
         const nameSelectedParticipant = isEqual(selectedParticipant, null) ? null : selectedParticipant.name;
 
@@ -29,11 +30,19 @@ class App extends Component {
             <div className="app">
                 <header className="app__header">
                     <img src={logo} className="app__logo" alt="logo" />
-                    <h1 className="app__title">Welcome to loans roulette</h1>
+                    <h1 className="app__title">Welcome to random roulette!</h1>
                 </header>
                 <div className="row app__container-cols" >
-                    <div className="col-md-12">
+                    <div className="col-md-5">
+                        <LoadList onLoad={loadList} />
+                    </div>
+                    <div className="col-md-2 app__or">
+                        OR
+                    </div>
+                    <div className="col-md-5">
                         <UploadFile onFileUpload={fileUpload} />
+                    </div>
+                    <div className="col-md-12">
                         <SearchComponent onHandleModifyValue={this.onClickRouletteButton} />
                         {!isEqual(selectedParticipant, null) &&
                             <SelectedCard
@@ -57,6 +66,7 @@ App.propTypes = {
     setRandomParticipant: PropTypes.func.isRequired,
     removeParticipant: PropTypes.func.isRequired,
     listOfParticipants: PropTypes.array,
+    loadList: PropTypes.func.isRequired,
     selectedParticipant: PropTypes.object
 };
 
@@ -71,6 +81,7 @@ export default connect(
     }),
     {
         fileUpload: fileUpload,
+        loadList: loadList,
         setRandomParticipant: setRandomParticipant,
         removeParticipant: removeParticipant
     })(App);
