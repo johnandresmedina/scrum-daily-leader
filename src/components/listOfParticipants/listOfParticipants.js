@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import isEqual from 'lodash/isEqual';
+import get from 'lodash/get';
 
 //Components
 import ParticipantCard from './participantCard/participantCard';
@@ -17,9 +18,9 @@ class ListOfParticipants extends Component {
         return (
             <div key={`participant-${index}`} className="col-md-3">
                 <ParticipantCard
-                    identification={participant.index}
+                    identification={index}
                     name={participant.name}
-                    description={participant.description}
+                    description={get(participant, 'description', 'An awesome member!')}
                     active={active}
                 />
             </div>

@@ -37,6 +37,9 @@ $header-text-color: #fff;
     display: inline-block;
   }
 
+  &__or {
+    padding-top: 20px;
+  }
 }
 
 @keyframes app-logo-spin {
