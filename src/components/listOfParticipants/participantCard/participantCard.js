@@ -47,7 +47,6 @@ class ParticipantCard extends Component {
 }
 
 ParticipantCard.propTypes = {
-    identification: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     description: PropTypes.string,
     active: PropTypes.bool,

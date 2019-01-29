@@ -18,7 +18,6 @@ class SelectedCard extends Component {
             <div className="col-md-12 selected-card">
                 <div className="app__participant">
                     <ParticipantCard
-                        identification={selectedParticipant.index}
                         name={selectedParticipant.name}
                         description={selectedParticipant.description}
                         active

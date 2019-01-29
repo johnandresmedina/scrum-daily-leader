@@ -50,10 +50,10 @@ const fileUpload = file => dispatch => {
 };
 
 const loadList = list => dispatch => {
-    let listOfParticipants = [];
+    const listOfParticipants = [];
 
     if (list !== '') {
-        list.split(',').trim().map(p => listOfParticipants.push({ name: p }));
+        list.split(',').map(participant => listOfParticipants.push({ name: participant.trim() }));
         dispatch(actions.updateParticipantList({ listOfParticipants }));
     }
 };
