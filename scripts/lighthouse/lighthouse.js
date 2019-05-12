@@ -1,33 +1,46 @@
 "use strict";
 
-const express = require("express");
 const lighthouse = require("lighthouse");
 const chromeLauncher = require("chrome-launcher");
 const fileSystem = require("fs");
 const open = require("open");
 const os = require("os");
-const path = require("path");
 const { promisify } = require("util");
 
+const { port } = require("./config");
+const { startServer, stopServer } = require("./server");
+
+const REPORT_PATH = "./reports/lighthouse-report.html";
 const writeFile = promisify(fileSystem.writeFile);
-let server = express();
-const port = process.env.PORT || 5000;
 
-server.use(express.static(path.join(__dirname, "/../../build")));
+async function init() {
+    startServer();
+    let result;
+    const { opts, settings } = getLightHouseConfig();
 
-server.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname + "/../../build/index.html"));
-});
+    try {
+        result = await launchChromeAndRunLighthouse(`http://localhost:${port}`, opts, settings);
+    } catch (error) {
+        stopServer();
+        throw error;
+    }
 
-const startServer = function() {
-    server = server.listen(port, () => {
-        console.log(`server listening on port: ${port}`);
-    });
-};
+    await writeFile(REPORT_PATH, result.report);
+    stopServer();
+    openReportFile();
+}
 
-const stopServer = function() {
-    server.close(() => console.log("stoping server"));
-};
+function getLightHouseConfig() {
+    const opts = { chromeFlags: ["--show-paint-rects"] };
+
+    const settings = {
+        extends: "lighthouse:default",
+        settings: {
+            output: "html"
+        }
+    };
+    return { opts, settings };
+}
 
 async function launchChromeAndRunLighthouse(url, opts, config = null) {
     const chrome = await chromeLauncher.launch({ chromeFlags: opts.chromeFlags });
@@ -37,34 +50,8 @@ async function launchChromeAndRunLighthouse(url, opts, config = null) {
     return result;
 }
 
-(async () => {
-    startServer();
-
-    const opts = { chromeFlags: ["--show-paint-rects"] };
-
-    const settings = {
-        extends: "lighthouse:default",
-        settings: {
-            output: "html"
-        }
-    };
-
-    let result;
-
-    try {
-        result = await launchChromeAndRunLighthouse(`http://localhost:${port}`, opts, settings);
-    } catch (error) {
-        stopServer();
-        throw error;
-    }
-
-    await writeFile("./reports/lighthouse-report.html", result.report);
-    stopServer();
-    openReportFile();
-})();
-
 async function openReportFile() {
-    await open("./reports/lighthouse-report.html", getOpenFileConfiguration());
+    await open(REPORT_PATH, getOpenFileConfiguration());
 }
 
 function getOpenFileConfiguration() {
@@ -83,3 +70,5 @@ function getBrowserName() {
     }
     return browserName;
 }
+
+init();
