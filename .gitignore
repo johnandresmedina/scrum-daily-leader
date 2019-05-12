@@ -9,11 +9,12 @@
 # production
 /build
 
+
 #vs code config
 .vscode
 
 #reports
-reports/*
+/reports
 
 # misc
 .DS_Store
