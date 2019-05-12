@@ -9,6 +9,12 @@
 # production
 /build
 
+#vs code config
+.vscode
+
+#reports
+reports/*
+
 # misc
 .DS_Store
 .env.local
