@@ -2,6 +2,7 @@
     "name": "random-data-picker",
     "version": "1.0.0",
     "private": true,
+    "homepage": "http://jhonandresmedina.github.io/random-data-picker",
     "scripts": {
         "eslint": "eslint src --color",
         "sass-lint": "sass-lint -v -q -c .sass-lint.yml",
