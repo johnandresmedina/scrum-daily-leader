@@ -43,7 +43,7 @@ class App extends Component {
             <div className='app'>
                 <header className='app__header'>
                     <img src={logo} className='app__logo' alt='logo' />
-                    <h1 className='app__title'>Welcome to random roulette!</h1>
+                    <h1 className='app__title'>Choose your scrum daily leader!</h1>
                 </header>
                 <div className='row app__container-cols'>
                     <div className='col-md-5'>
