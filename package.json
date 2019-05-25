@@ -8,6 +8,7 @@
         "start": "node scripts/start.js",
         "build": "node scripts/build.js",
         "test": "node scripts/test.js --env=jsdom",
+        "test:coverage": "npm test -- --coverage",
         "prelighthouse": "npm run build",
         "lighthouse": "node scripts/lighthouse/lighthouse.js",
         "predeploy": "npm run build",
