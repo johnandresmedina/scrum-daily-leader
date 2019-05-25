@@ -6,23 +6,19 @@ import { rootReducer } from './rootReducer';
 import { loadState, saveState } from './localStorage';
 
 const configureStore = () => {
-
-    const middleware = [
-        thunk,
-        reduxImmutableStateInvariant()
-    ];
+    const middleware = [thunk, reduxImmutableStateInvariant()];
 
     const initialState = loadState();
 
     const store = createStore(
         rootReducer,
         initialState ? { participants: { ...initialState } } : initialState,
-        applyMiddleware(...middleware)
+        applyMiddleware(...middleware),
     );
 
     store.subscribe(() => {
         saveState({
-            listOfParticipants: store.getState().participants.listOfParticipants
+            listOfParticipants: store.getState().participants.listOfParticipants,
         });
     });
 

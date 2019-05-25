@@ -1,16 +1,16 @@
-"use strict";
+'use strict';
 
-const lighthouse = require("lighthouse");
-const chromeLauncher = require("chrome-launcher");
-const fileSystem = require("fs");
-const open = require("open");
-const os = require("os");
-const { promisify } = require("util");
+const lighthouse = require('lighthouse');
+const chromeLauncher = require('chrome-launcher');
+const fileSystem = require('fs');
+const open = require('open');
+const os = require('os');
+const { promisify } = require('util');
 
-const { port } = require("./config");
-const { startServer, stopServer } = require("./server");
+const { port } = require('./config');
+const { startServer, stopServer } = require('./server');
 
-const REPORT_PATH = "./reports/lighthouse-report.html";
+const REPORT_PATH = './reports/lighthouse-report.html';
 const writeFile = promisify(fileSystem.writeFile);
 
 async function init() {
@@ -31,13 +31,13 @@ async function init() {
 }
 
 function getLightHouseConfig() {
-    const opts = { chromeFlags: ["--show-paint-rects"] };
+    const opts = { chromeFlags: ['--show-paint-rects'] };
 
     const settings = {
-        extends: "lighthouse:default",
+        extends: 'lighthouse:default',
         settings: {
-            output: "html"
-        }
+            output: 'html',
+        },
     };
     return { opts, settings };
 }
@@ -60,13 +60,13 @@ function getOpenFileConfiguration() {
 }
 
 function getBrowserName() {
-    let browserName = "firefox";
+    let browserName = 'firefox';
     const operativeSystem = os.platform();
 
-    if (operativeSystem === "linux") {
-        browserName = "google-chrome";
-    } else if (operativeSystem === "win32") {
-        browserName = "chrome";
+    if (operativeSystem === 'linux') {
+        browserName = 'google-chrome';
+    } else if (operativeSystem === 'win32') {
+        browserName = 'chrome';
     }
     return browserName;
 }

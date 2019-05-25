@@ -7,41 +7,41 @@ $participation-card-active-text-color: #fff;
 $participation-card--background-item: #ececec;
 
 .participant-card {
-  margin-top: 10px;
-  text-align: center;
-  width: 100%;
+    margin-top: 10px;
+    text-align: center;
+    width: 100%;
 
-  &__name {
-    padding-left: 15px;
-    padding-top: 9px;
-  }
-
-  &__text {
-    font-size: 14px;
-    text-align: justify;
-  }
-
-  &__container-circle {
-    margin-top: 3px;
-  }
-
-  &__circle {
-    background-color: $participation-card-circle-bg-color;
-    border-radius: 50%;
-    color: $participation-card-text-color;
-    display: inline-block;
-    font-size: 20px;
-    height: 30px;
-    width: 30px;
-
-    &--active {
-      background-color: $participation-card-active-bg-color;
-      color: $participation-card-active-text-color;
+    &__name {
+        padding-left: 15px;
+        padding-top: 9px;
     }
-  }
 
-  &__container-inline {
-    display: inline-block;
-    width: 350px;
-  }
+    &__text {
+        font-size: 14px;
+        text-align: justify;
+    }
+
+    &__container-circle {
+        margin-top: 3px;
+    }
+
+    &__circle {
+        background-color: $participation-card-circle-bg-color;
+        border-radius: 50%;
+        color: $participation-card-text-color;
+        display: inline-block;
+        font-size: 20px;
+        height: 30px;
+        width: 30px;
+
+        &--active {
+            background-color: $participation-card-active-bg-color;
+            color: $participation-card-active-text-color;
+        }
+    }
+
+    &__container-inline {
+        display: inline-block;
+        width: 350px;
+    }
 }

@@ -10,23 +10,30 @@ class LoadList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            inputValue: ''
+            inputValue: '',
         };
     }
 
     updateInputValue(evt) {
         this.setState({
-            inputValue: evt.target.value
+            inputValue: evt.target.value,
         });
     }
 
     render() {
         return (
-            <div className="load-list">
-                <input className="form-control load-list__input" type="input" placeholder="Write persons separate by commas"
-                    onChange={evt => this.updateInputValue(evt)} />
-                <Button variant="contained" color="primary" onClick={() => this.props.onLoad(this.state.inputValue)}>
-                    <label className="load-list__icon-label">Load</label>
+            <div className='load-list'>
+                <input
+                    className='form-control load-list__input'
+                    type='input'
+                    placeholder='Write persons separate by commas'
+                    onChange={evt => this.updateInputValue(evt)}
+                />
+                <Button
+                    variant='contained'
+                    color='primary'
+                    onClick={() => this.props.onLoad(this.state.inputValue)}>
+                    <label className='load-list__icon-label'>Load</label>
                     <CloudUpload />
                 </Button>
             </div>
@@ -35,7 +42,7 @@ class LoadList extends Component {
 }
 
 LoadList.propTypes = {
-    onLoad: PropTypes.func.isRequired
+    onLoad: PropTypes.func.isRequired,
 };
 
 export default LoadList;

@@ -10,13 +10,12 @@ import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 class SelectedCard extends Component {
-
     render() {
         const { selectedParticipant, removeParticipant } = this.props;
 
         return (
-            <div className="col-md-12 selected-card">
-                <div className="app__participant">
+            <div className='col-md-12 selected-card'>
+                <div className='app__participant'>
                     <ParticipantCard
                         name={selectedParticipant.name}
                         description={selectedParticipant.description}
@@ -24,12 +23,12 @@ class SelectedCard extends Component {
                         participantSeleted
                     />
                 </div>
-                <div className="app__container-remove-button">
+                <div className='app__container-remove-button'>
                     <Button
-                        variant="contained"
-                        color="secondary"
-                        className="app__remove-button"
-                        aria-label="delete"
+                        variant='contained'
+                        color='secondary'
+                        className='app__remove-button'
+                        aria-label='delete'
                         onClick={() => removeParticipant(selectedParticipant.index)}>
                         Remove
                         <DeleteIcon />
@@ -42,7 +41,7 @@ class SelectedCard extends Component {
 
 SelectedCard.propTypes = {
     selectedParticipant: PropTypes.object.isRequired,
-    removeParticipant: PropTypes.func.isRequired
+    removeParticipant: PropTypes.func.isRequired,
 };
 
 export default SelectedCard;

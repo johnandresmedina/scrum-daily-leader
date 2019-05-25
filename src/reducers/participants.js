@@ -5,31 +5,32 @@ const initialState = {
     fetching: false,
     listOfParticipants: [],
     selectedParticipant: null,
-    error: null
+    error: null,
 };
 
 const participantsReducer = handleActions(
     {
         [actions.setSelectedParticipant]: (state, action) => ({
             ...state,
-            selectedParticipant: action.payload.selectedParticipant
+            selectedParticipant: action.payload.selectedParticipant,
         }),
 
-        [combineActions(
-            actions.removeParticipantListSuccess,
-            actions.updateParticipantList)]: (state, action) => ({
-                ...state,
-                listOfParticipants: action.payload.listOfParticipants,
-                selectedParticipant: null
-            }),
+        [combineActions(actions.removeParticipantListSuccess, actions.updateParticipantList)]: (
+            state,
+            action,
+        ) => ({
+            ...state,
+            listOfParticipants: action.payload.listOfParticipants,
+            selectedParticipant: null,
+        }),
 
         [actions.updateParticipantListError]: (state, action) => ({
             ...state,
             error: action.payload.error,
-            selectedParticipant: null
-        })
+            selectedParticipant: null,
+        }),
     },
-    initialState
+    initialState,
 );
 
 export default participantsReducer;

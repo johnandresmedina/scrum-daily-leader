@@ -6,11 +6,10 @@ const actions = createActions(
     actionTypes.SET_SELECTED_PARTICIPANT,
     actionTypes.REMOVE_PARTICIPANT_LIST_SUCCESS,
     actionTypes.UPDATE_PARTICIPANT_LIST,
-    actionTypes.UPDATE_PARTICIPANT_LIST_ERROR
+    actionTypes.UPDATE_PARTICIPANT_LIST_ERROR,
 );
 
 const setRandomParticipant = () => (dispatch, getState) => {
-
     const participantList = getState().participants.listOfParticipants;
     const index = random(0, participantList.length - 1);
     const selectedParticipant = { ...participantList[index], index };
@@ -19,7 +18,6 @@ const setRandomParticipant = () => (dispatch, getState) => {
 };
 
 const removeParticipant = index => (dispatch, getState) => {
-
     const listOfParticipants = getState().participants.listOfParticipants.slice();
 
     if (index === 0) {
@@ -32,7 +30,6 @@ const removeParticipant = index => (dispatch, getState) => {
 };
 
 const fileUpload = file => dispatch => {
-
     if (file) {
         const reader = new FileReader();
 

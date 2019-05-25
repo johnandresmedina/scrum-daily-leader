@@ -7,12 +7,11 @@ import Button from '@material-ui/core/Button';
 import AutorenewIcon from '@material-ui/icons/Autorenew';
 
 class SearchComponent extends Component {
-
     render() {
         const { onHandleModifyValue } = this.props;
         return (
-            <div className="search-component">
-                <Button variant="contained" color="primary" onClick={onHandleModifyValue}>
+            <div className='search-component'>
+                <Button variant='contained' color='primary' onClick={onHandleModifyValue}>
                     Roulette
                     <AutorenewIcon />
                 </Button>
@@ -22,7 +21,7 @@ class SearchComponent extends Component {
 }
 
 SearchComponent.propTypes = {
-    onHandleModifyValue: PropTypes.func.isRequired
+    onHandleModifyValue: PropTypes.func.isRequired,
 };
 
 export default SearchComponent;
