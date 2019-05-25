@@ -9,7 +9,6 @@
 # production
 /build
 
-
 #vs code config
 .vscode
 
@@ -22,12 +21,8 @@
 .env.development.local
 .env.test.local
 .env.production.local
-package-lock.json
 
 #logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-# database
-data.json
