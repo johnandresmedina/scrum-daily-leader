@@ -1,12 +1,13 @@
 import { createStore, applyMiddleware } from 'redux';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 import thunk from 'redux-thunk';
+import logger from 'redux-logger';
 
 import { rootReducer } from './rootReducer';
 import { loadState, saveState } from './localStorage';
 
 const configureStore = () => {
-    const middleware = [thunk, reduxImmutableStateInvariant()];
+    const middleware = [thunk, reduxImmutableStateInvariant(), logger];
 
     const initialState = loadState();
 
