@@ -3,7 +3,7 @@ import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
-import { rootReducer } from './rootReducer';
+import { rootReducer } from '../reducers';
 import { loadState, saveState } from './localStorage';
 
 const configureStore = () => {
