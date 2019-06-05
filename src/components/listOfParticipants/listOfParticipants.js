@@ -27,11 +27,12 @@ class ListOfParticipants extends Component {
     };
 
     render() {
-        const { listOfParticipants } = this.props;
+        const { participants } = this.props;
+
         return (
             <div className='list-of-participants'>
                 <div className='row'>
-                    {listOfParticipants.map((participant, key) =>
+                    {participants.map((participant, key) =>
                         this.mapEachParticipant(participant, key),
                     )}
                 </div>
@@ -42,7 +43,7 @@ class ListOfParticipants extends Component {
 
 ListOfParticipants.propTypes = {
     valueSeleted: PropTypes.string,
-    listOfParticipants: PropTypes.array.isRequired,
+    participants: PropTypes.array.isRequired,
 };
 
 export default ListOfParticipants;

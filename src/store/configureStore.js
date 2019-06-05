@@ -3,7 +3,7 @@ import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
-import { rootReducer } from '../reducers';
+import { rootReducer } from '../app';
 import { loadState, saveState } from './localStorage';
 
 const configureStore = () => {
@@ -13,13 +13,13 @@ const configureStore = () => {
 
     const store = createStore(
         rootReducer,
-        initialState ? { participants: { ...initialState } } : initialState,
+        initialState ? { participantsState: { ...initialState } } : initialState,
         applyMiddleware(...middleware),
     );
 
     store.subscribe(() => {
         saveState({
-            listOfParticipants: store.getState().participants.listOfParticipants,
+            participants: store.getState().participantsState.participants,
         });
     });
 

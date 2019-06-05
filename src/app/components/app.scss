@@ -1,0 +1,14 @@
+$header-bg-color: #222;
+$header-text-color: #fff;
+
+.app {
+    text-align: center;
+
+    &__container {
+        margin: 20px;
+    }
+
+    &__or {
+        padding-top: 20px;
+    }
+}

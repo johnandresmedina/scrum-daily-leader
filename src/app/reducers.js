@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import participants from './participants';
+import participants from '../reducers/participants';
 
 export const rootReducer = combineReducers({
-    participants,
+    participantsState: participants,
 });

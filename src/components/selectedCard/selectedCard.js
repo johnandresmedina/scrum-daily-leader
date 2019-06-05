@@ -1,6 +1,7 @@
+import './selectedCard.scss';
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './selectedCard.scss';
 
 //Components
 import ParticipantCard from '../listOfParticipants/participantCard/participantCard';
@@ -15,7 +16,7 @@ class SelectedCard extends Component {
 
         return (
             <div className='col-md-12 selected-card'>
-                <div className='app__participant'>
+                <div className='selected-card__participant'>
                     <ParticipantCard
                         name={selectedParticipant.name}
                         description={selectedParticipant.description}
@@ -23,11 +24,11 @@ class SelectedCard extends Component {
                         participantSeleted
                     />
                 </div>
-                <div className='app__container-remove-button'>
+                <div className='selected-card__remove-button-container'>
                     <Button
                         variant='contained'
                         color='secondary'
-                        className='app__remove-button'
+                        className='selected-card__remove-button'
                         aria-label='delete'
                         onClick={() => removeParticipant(selectedParticipant.index)}>
                         Remove

@@ -3,7 +3,7 @@ import { handleActions, combineActions } from 'redux-actions';
 
 const initialState = {
     fetching: false,
-    listOfParticipants: [],
+    participants: [],
     selectedParticipant: null,
     error: null,
 };
@@ -20,7 +20,7 @@ const participantsReducer = handleActions(
             action,
         ) => ({
             ...state,
-            listOfParticipants: action.payload.listOfParticipants,
+            participants: action.payload.participants,
             selectedParticipant: null,
         }),
 
