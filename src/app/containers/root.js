@@ -7,7 +7,7 @@ import { setRandomParticipant, removeParticipant, fileUpload } from '../../actio
 //Components
 import App from '../components/app';
 
-class AppContainer extends Component {
+class Root extends Component {
     onClickRouletteButton = () => {
         this.props.setRandomParticipant();
     };
@@ -27,7 +27,7 @@ class AppContainer extends Component {
     }
 }
 
-AppContainer.propTypes = {
+Root.propTypes = {
     fileUpload: PropTypes.func.isRequired,
     participants: PropTypes.array,
     removeParticipant: PropTypes.func.isRequired,
@@ -45,4 +45,4 @@ export default connect(
         removeParticipant,
         setRandomParticipant,
     },
-)(AppContainer);
+)(Root);

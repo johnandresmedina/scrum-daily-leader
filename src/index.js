@@ -5,13 +5,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
-import AppContainer from './app';
+import Root, { DevTools } from './app';
 import configureStore from '../src/store/configureStore';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
     <Provider store={configureStore()}>
-        <AppContainer />
+        <div>
+            <Root />
+            <DevTools />
+        </div>
     </Provider>,
     document.getElementById('root'),
 );

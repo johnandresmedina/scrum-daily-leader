@@ -1,20 +1,25 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
-import { rootReducer } from '../app';
+import { rootReducer, DevTools } from '../app';
 import { loadState, saveState } from './localStorage';
 
-const configureStore = () => {
-    const middleware = [thunk, reduxImmutableStateInvariant(), logger];
+const middleware = [thunk, reduxImmutableStateInvariant(), logger];
 
+const enhancer = compose(
+    applyMiddleware(...middleware),
+    DevTools.instrument(),
+);
+
+const configureStore = () => {
     const initialState = loadState();
 
     const store = createStore(
         rootReducer,
         initialState ? { participantsState: { ...initialState } } : initialState,
-        applyMiddleware(...middleware),
+        enhancer,
     );
 
     store.subscribe(() => {
