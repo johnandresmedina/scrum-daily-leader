@@ -1,3 +1,4 @@
+import { hot } from 'react-hot-loader/root';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
@@ -35,14 +36,16 @@ Root.propTypes = {
     setRandomParticipant: PropTypes.func.isRequired,
 };
 
-export default connect(
-    state => ({
-        participants: state.participantsState.participants,
-        selectedParticipant: state.participantsState.selectedParticipant,
-    }),
-    {
-        fileUpload,
-        removeParticipant,
-        setRandomParticipant,
-    },
-)(Root);
+export default hot(
+    connect(
+        state => ({
+            participants: state.participantsState.participants,
+            selectedParticipant: state.participantsState.selectedParticipant,
+        }),
+        {
+            fileUpload,
+            removeParticipant,
+            setRandomParticipant,
+        },
+    )(Root),
+);

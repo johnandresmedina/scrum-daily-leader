@@ -1,9 +1,7 @@
 {
-    "presets": [
-        "env",
-        "react-app"
-    ],
+    "presets": ["env", "react-app"],
     "plugins": [
+        "react-hot-loader/babel",
         "transform-class-properties",
         [
             "transform-es2015-modules-commonjs-simple",
