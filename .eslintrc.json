@@ -16,9 +16,7 @@
             "jsx": true
         }
     },
-    "plugins": [
-        "jest"
-    ],
+    "plugins": ["jest"],
     "rules": {
         "semi": 2
     },
