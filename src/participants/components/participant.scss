@@ -1,0 +1,47 @@
+$bg-color: #fdcfdc;
+$border-color: #000;
+$text-color: #000;
+$circle-bg-color: #98b96b;
+$active-bg-color: #f00;
+$active-text-color: #fff;
+$-background-item: #ececec;
+
+.participant {
+    margin-top: 10px;
+    text-align: center;
+    width: 100%;
+
+    &__name {
+        padding-left: 15px;
+        padding-top: 9px;
+    }
+
+    &__text {
+        font-size: 14px;
+        text-align: justify;
+    }
+
+    &__container-circle {
+        margin-top: 3px;
+    }
+
+    &__circle {
+        background-color: $circle-bg-color;
+        border-radius: 50%;
+        color: $text-color;
+        display: inline-block;
+        font-size: 20px;
+        height: 30px;
+        width: 30px;
+
+        &--active {
+            background-color: $active-bg-color;
+            color: $active-text-color;
+        }
+    }
+
+    &__selected {
+        display: inline-block;
+        width: 350px;
+    }
+}

@@ -1,0 +1,9 @@
+.selected-participant {
+    margin-top: 30px;
+    text-align: center;
+    display: inline-block;
+
+    &__remove-button-container {
+        display: inline-block;
+    }
+}

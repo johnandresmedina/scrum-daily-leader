@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 import { loadParticipants } from '../actions';
 
-//Components
 import LoadList from '../components/loadList';
 
 class LoadListContainer extends Component {
