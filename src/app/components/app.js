@@ -2,13 +2,11 @@ import './app.scss';
 
 import React from 'react';
 
-//Components
 import Header from './header/header';
 import LoadList from '../../loadList';
-import UploadFile from '../../uploadFile/containers/uploadFile';
-import RouletteButton from '../../rouletteButton/containers/rouletteButton';
-import SelectedParticipant from '../../participants/containers/selectedParticipant';
-import Participants from '../../participants/containers/participants';
+import UploadFile from '../../uploadFile';
+import RouletteButton from '../../rouletteButton';
+import Participants, { SelectedParticipant } from '../../participants';
 
 const App = () => {
     return (
