@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { fileUpload } from '../../actions/participants';
+import { fileUpload } from '../../participants/actions';
 
 import UploadFile from '../components/uploadFile';
 

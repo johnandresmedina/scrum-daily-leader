@@ -1,4 +1,4 @@
-import { actions } from '../actions/participants';
+import { actions } from '../participants/actions';
 
 const loadParticipants = inputValues => dispatch => {
     const participants = [];

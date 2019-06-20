@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { setRandomParticipant } from '../../actions/participants';
+import { setRandomParticipant } from '../../participants/actions';
 
 import RouletteButton from '../components/rouletteButton';
 

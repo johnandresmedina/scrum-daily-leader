@@ -1,6 +1,7 @@
 import { createActions } from 'redux-actions';
-import actionTypes from '../constants/actionTypes';
 import random from 'lodash/random';
+
+import actionTypes from './actionsTypes';
 
 const actions = createActions(
     actionTypes.SET_SELECTED_PARTICIPANT,
@@ -46,4 +47,4 @@ const fileUpload = file => dispatch => {
     }
 };
 
-export { setRandomParticipant, removeParticipant, fileUpload, actions };
+export { actions, fileUpload, setRandomParticipant, removeParticipant };

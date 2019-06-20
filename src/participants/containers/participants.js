@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import isEqual from 'lodash/isEqual';
 import get from 'lodash/get';
 
-import { removeParticipant } from '../../actions/participants';
+import { removeParticipant } from '../actions';
 
 import Participant from '../components/participant';
 

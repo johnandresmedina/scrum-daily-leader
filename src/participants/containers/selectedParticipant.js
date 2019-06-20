@@ -4,7 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { removeParticipant } from '../../actions/participants';
+import { removeParticipant } from '../actions';
 
 import Participant from '../components/participant';
 

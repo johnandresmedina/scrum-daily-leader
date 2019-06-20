@@ -1,5 +1,6 @@
-import { actions } from '../actions/participants';
 import { handleActions, combineActions } from 'redux-actions';
+
+import { actions } from './actions';
 
 const initialState = {
     fetching: false,
