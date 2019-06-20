@@ -6,9 +6,11 @@ import { connect } from 'react-redux';
 import isEqual from 'lodash/isEqual';
 import get from 'lodash/get';
 
+import { removeParticipant } from '../../actions/participants';
+
 import Participant from '../components/participant';
 
-const Participants = ({ participants, selectedParticipant }) => {
+const Participants = ({ participants, selectedParticipant, removeParticipant }) => {
     const getParticipantsCard = () => {
         const currentName = selectedParticipant ? selectedParticipant.name : null;
 
@@ -21,7 +23,9 @@ const Participants = ({ participants, selectedParticipant }) => {
                     <Participant
                         active={active}
                         description={get(participant, 'description', 'An awesome member!')}
+                        index={index}
                         name={name}
+                        removeParticipant={removeParticipant}
                     />
                 </div>
             );
@@ -38,6 +42,7 @@ const Participants = ({ participants, selectedParticipant }) => {
 Participants.propTypes = {
     participants: PropTypes.array.isRequired,
     selectedParticipant: PropTypes.object,
+    removeParticipant: PropTypes.func.isRequired,
 };
 
 export default connect(
@@ -45,5 +50,5 @@ export default connect(
         participants: state.participantsState.participants,
         selectedParticipant: state.participantsState.selectedParticipant,
     }),
-    null,
+    { removeParticipant },
 )(Participants);

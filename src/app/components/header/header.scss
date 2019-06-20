@@ -4,8 +4,8 @@ $header-text-color: #fff;
 .header {
     background-color: $header-bg-color;
     color: $header-text-color;
-    height: 150px;
-    padding: 20px;
+    height: 135px;
+    padding: 8px;
 
     &__logo {
         animation: app-logo-spin infinite 20s linear;

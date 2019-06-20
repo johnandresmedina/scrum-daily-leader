@@ -4,35 +4,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Card from '../../card';
 
-const Participant = ({ active, description, name, selected }) => {
+const Participant = ({ active, description, index, name, selected, removeParticipant }) => {
     const containerClass = classnames({
         participant__selected: selected,
     });
-    const circleClass = classnames('participant__circle', {
-        ' participant__circle--active': active,
-    });
-    const firstLetter = name ? name.substring(0, 1) : null;
+
+    const handleDeleteClick = () => {
+        removeParticipant(index);
+    };
 
     return (
         <div className='participant'>
             <div className={containerClass}>
-                <ExpansionPanel defaultExpanded={selected}>
-                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                        <div className='participant__container-circle'>
-                            <div className={circleClass}>{firstLetter}</div>
-                        </div>
-                        <Typography className='participant__name'>{name}</Typography>
-                    </ExpansionPanelSummary>
-                    <ExpansionPanelDetails>
-                        <Typography>{description}</Typography>
-                    </ExpansionPanelDetails>
-                </ExpansionPanel>
+                <Card
+                    active={active}
+                    description={description}
+                    title={name}
+                    handleDeleteClick={handleDeleteClick}
+                />
             </div>
         </div>
     );
@@ -41,8 +32,10 @@ const Participant = ({ active, description, name, selected }) => {
 Participant.propTypes = {
     active: PropTypes.bool,
     description: PropTypes.string,
+    index: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     selected: PropTypes.bool,
+    removeParticipant: PropTypes.func.isRequired,
 };
 
 export default Participant;

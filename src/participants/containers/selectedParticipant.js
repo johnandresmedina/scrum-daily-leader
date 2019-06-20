@@ -14,8 +14,10 @@ const SelectedParticipant = ({ selectedParticipant, removeParticipant }) => {
             <Participant
                 active
                 description={selectedParticipant.description}
+                index={selectedParticipant.index}
                 name={selectedParticipant.name}
                 selected
+                removeParticipant={removeParticipant}
             />
         </div>
     ) : null;
