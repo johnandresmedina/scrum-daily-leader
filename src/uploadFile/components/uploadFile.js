@@ -8,7 +8,7 @@ import CloudUpload from '@material-ui/icons/CloudUpload';
 
 const UploadFile = ({ onFileChange, onFileUpload }) => {
     return (
-        <div className='search-component'>
+        <div className='upload-file'>
             <input
                 className='form-control upload-file__input'
                 type='file'

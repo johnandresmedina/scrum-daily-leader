@@ -12,10 +12,13 @@ const actions = createActions(
 
 const setRandomParticipant = () => (dispatch, getState) => {
     const participants = getState().participantsState.participants;
-    const index = random(0, participants.length - 1);
-    const selectedParticipant = { ...participants[index], index };
 
-    dispatch(actions.setSelectedParticipant({ selectedParticipant }));
+    if (participants.length) {
+        const index = random(0, participants.length - 1);
+        const selectedParticipant = { ...participants[index], index };
+
+        dispatch(actions.setSelectedParticipant({ selectedParticipant }));
+    }
 };
 
 const removeParticipant = index => (dispatch, getState) => {

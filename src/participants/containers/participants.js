@@ -32,9 +32,19 @@ const Participants = ({ participants, selectedParticipant, removeParticipant }) 
         });
     };
 
+    const buildContent = () => {
+        return participants.length ? (
+            getParticipantsCard()
+        ) : (
+            <div className='participants__no-content'>
+                Looks like your participant list is empty!
+            </div>
+        );
+    };
+
     return (
         <div className='participants'>
-            <div className='row'>{getParticipantsCard()}</div>
+            <div className='row'>{buildContent()}</div>
         </div>
     );
 };
