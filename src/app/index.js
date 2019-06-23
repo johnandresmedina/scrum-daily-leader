@@ -1,6 +1,6 @@
 import Root from './containers/root';
-import DevTools from './containers/devTools';
 import { rootReducer } from './reducers';
+import DevTools from './containers/devTools';
 
 export default Root;
 export { rootReducer, DevTools };
