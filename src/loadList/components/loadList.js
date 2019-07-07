@@ -14,7 +14,7 @@ const loadList = ({ inputValue, onLoad, updateInputValue }) => {
                 className='form-control load-list__input'
                 type='input'
                 value={inputValue}
-                placeholder='Write persons separate by commas'
+                placeholder='Write person names separated by commas'
                 onChange={updateInputValue}
             />
             <Button variant='contained' color='primary' onClick={() => onLoad(inputValue)}>

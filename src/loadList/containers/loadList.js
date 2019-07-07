@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -6,34 +6,21 @@ import { loadParticipants } from '../actions';
 
 import LoadList from '../components/loadList';
 
-class LoadListContainer extends Component {
-    constructor(props) {
-        super(props);
+const LoadListContainer = ({ loadParticipants }) => {
+    const [input, setInput] = useState('');
 
-        this.state = {
-            inputValue: '',
-        };
-    }
-
-    updateInputValue = evt => {
-        this.setState({
-            inputValue: evt.target.value,
-        });
+    const updateInputValue = evt => {
+        setInput(evt.target.value);
     };
 
-    render() {
-        const { inputValue } = this.state;
-        const { loadParticipants } = this.props;
-
-        return (
-            <LoadList
-                inputValue={inputValue}
-                onLoad={loadParticipants}
-                updateInputValue={this.updateInputValue}
-            />
-        );
-    }
-}
+    return (
+        <LoadList
+            inputValue={input}
+            onLoad={loadParticipants}
+            updateInputValue={updateInputValue}
+        />
+    );
+};
 
 LoadListContainer.propTypes = {
     loadParticipants: PropTypes.func.isRequired,

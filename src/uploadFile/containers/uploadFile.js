@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -6,26 +6,20 @@ import { fileUpload } from '../../participants/actions';
 
 import UploadFile from '../components/uploadFile';
 
-class UploadFileContainer extends Component {
-    constructor(props) {
-        super(props);
+const UploadFileContainer = ({ fileUpload }) => {
+    const [file, setFile] = useState(null);
 
-        this.state = { file: null };
-    }
-
-    onFileChange = e => {
+    const onFileChange = e => {
         const file = !!e.target.files && e.target.files[0];
-        this.setState({ file });
+        setFile(file);
     };
 
-    onFileUpload = () => {
-        this.props.fileUpload(this.state.file);
+    const onFileUpload = () => {
+        fileUpload(file);
     };
 
-    render() {
-        return <UploadFile onFileChange={this.onFileChange} onFileUpload={this.onFileUpload} />;
-    }
-}
+    return <UploadFile onFileChange={onFileChange} onFileUpload={onFileUpload} />;
+};
 
 UploadFileContainer.propTypes = {
     fileUpload: PropTypes.func.isRequired,
