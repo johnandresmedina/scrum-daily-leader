@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import isEqual from 'lodash/isEqual';
 import get from 'lodash/get';
+import { FormattedMessage } from 'react-intl';
 
 import { removeParticipant } from '../actions';
 
@@ -37,7 +38,7 @@ const Participants = ({ participants, selectedParticipant, removeParticipant }) 
             getParticipantsCard()
         ) : (
             <div className='participants__no-content'>
-                Looks like your participant list is empty!
+                <FormattedMessage id='participants-empty' />
             </div>
         );
     };
