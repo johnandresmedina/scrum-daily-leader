@@ -3,6 +3,7 @@ import './app.scss';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
+import injectIntlProvider from '../../i18n/injectIntlProvider';
 import Header from './header/header';
 import LoadList from '../../loadList';
 import UploadFile from '../../uploadFile';
@@ -33,4 +34,4 @@ const App = () => {
     );
 };
 
-export default App;
+export default injectIntlProvider(App);
