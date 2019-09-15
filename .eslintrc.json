@@ -8,12 +8,7 @@
         "browser": true,
         "node": true
     },
-    "extends": [
-        "react-app",
-        "eslint:recommended",
-        "plugin:react/recommended",
-        "plugin:jest/recommended"
-    ],
+    "extends": ["react-app", "eslint:recommended", "plugin:react/recommended"],
     "parserOptions": {
         "ecmaVersion": 6,
         "sourceType": "module",
@@ -21,7 +16,7 @@
             "jsx": true
         }
     },
-    "plugins": ["jest", "react-hooks"],
+    "plugins": ["react-hooks"],
     "rules": {
         "semi": 2,
         "react-hooks/rules-of-hooks": "error",
