@@ -1,15 +1,15 @@
-"use strict";
+'use strict';
 
-const express = require("express");
-const path = require("path");
-const { port } = require("./config");
+const express = require('express');
+const path = require('path');
+const { port } = require('./config');
 
 let server = express();
 
-server.use(express.static(path.join(__dirname, "/../../build")));
+server.use(express.static(path.join(__dirname, '/../../build')));
 
-server.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname + "/../../build/index.html"));
+server.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/../../build/index.html'));
 });
 
 const startServer = function() {
@@ -19,10 +19,10 @@ const startServer = function() {
 };
 
 const stopServer = function() {
-    server.close(() => console.log("stoping server"));
+    server.close(() => console.log('stoping server'));
 };
 
 module.exports = {
     startServer,
-    stopServer
+    stopServer,
 };

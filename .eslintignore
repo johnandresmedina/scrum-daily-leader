@@ -1,2 +1,2 @@
 // Files to ignore
-src/registerServiceWorker.js
+src/serviceWorker.js

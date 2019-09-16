@@ -1,0 +1,13 @@
+.load-list {
+    display: flex;
+    margin-top: 10px;
+
+    &__input {
+        margin-right: 10px;
+    }
+
+    &__icon-label {
+        margin-bottom: 0;
+        margin-right: 10px;
+    }
+}

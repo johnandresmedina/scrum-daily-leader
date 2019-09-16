@@ -1,0 +1,10 @@
+.participant {
+    margin-top: 10px;
+    text-align: center;
+    width: 100%;
+
+    &__selected {
+        display: inline-block;
+        width: 300px;
+    }
+}

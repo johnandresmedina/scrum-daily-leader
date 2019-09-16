@@ -1,15 +1,8 @@
 {
-    "presets": [
-        "env",
-        "react-app"
-    ],
+    "presets": ["react-app"],
     "plugins": [
-        "transform-class-properties",
-        [
-            "transform-es2015-modules-commonjs-simple",
-            {
-                "noMangle": true
-            }
-        ]
+        "react-hot-loader/babel",
+        "@babel/plugin-proposal-class-properties",
+        "@babel/plugin-transform-modules-commonjs"
     ]
 }

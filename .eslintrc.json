@@ -1,14 +1,14 @@
 {
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
     "env": {
         "browser": true,
         "node": true
     },
-    "extends": [
-        "react-app",
-        "eslint:recommended",
-        "plugin:react/recommended",
-        "plugin:jest/recommended"
-    ],
+    "extends": ["react-app", "eslint:recommended", "plugin:react/recommended"],
     "parserOptions": {
         "ecmaVersion": 6,
         "sourceType": "module",
@@ -16,11 +16,11 @@
             "jsx": true
         }
     },
-    "plugins": [
-        "jest"
-    ],
+    "plugins": ["react-hooks"],
     "rules": {
-        "semi": 2
+        "semi": 2,
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn"
     },
     "parser": "babel-eslint"
 }
