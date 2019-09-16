@@ -1,7 +1,18 @@
 {
-  "main.css": "static/css/main.d5f6864c.css",
-  "main.css.map": "static/css/main.d5f6864c.css.map",
-  "main.js": "static/js/main.6ed8b3c4.js",
-  "main.js.map": "static/js/main.6ed8b3c4.js.map",
-  "static/media/logo.svg": "static/media/logo.5d5d9eef.svg"
+  "files": {
+    "main.css": "/scrum-daily-leader/static/css/main.59a6a6a5.chunk.css",
+    "main.js": "/scrum-daily-leader/static/js/main.6d33edc1.chunk.js",
+    "main.js.map": "/scrum-daily-leader/static/js/main.6d33edc1.chunk.js.map",
+    "runtime~main.js": "/scrum-daily-leader/static/js/runtime~main.1590ce65.js",
+    "runtime~main.js.map": "/scrum-daily-leader/static/js/runtime~main.1590ce65.js.map",
+    "static/css/2.9c7ff97b.chunk.css": "/scrum-daily-leader/static/css/2.9c7ff97b.chunk.css",
+    "static/js/2.925cfa0e.chunk.js": "/scrum-daily-leader/static/js/2.925cfa0e.chunk.js",
+    "static/js/2.925cfa0e.chunk.js.map": "/scrum-daily-leader/static/js/2.925cfa0e.chunk.js.map",
+    "index.html": "/scrum-daily-leader/index.html",
+    "precache-manifest.781191b29fbc83b2a3370ff9ae7ec2c7.js": "/scrum-daily-leader/precache-manifest.781191b29fbc83b2a3370ff9ae7ec2c7.js",
+    "service-worker.js": "/scrum-daily-leader/service-worker.js",
+    "static/css/2.9c7ff97b.chunk.css.map": "/scrum-daily-leader/static/css/2.9c7ff97b.chunk.css.map",
+    "static/css/main.59a6a6a5.chunk.css.map": "/scrum-daily-leader/static/css/main.59a6a6a5.chunk.css.map",
+    "static/media/logo.svg": "/scrum-daily-leader/static/media/logo.5d5d9eef.svg"
+  }
 }
