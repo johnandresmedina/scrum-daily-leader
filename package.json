@@ -2,7 +2,7 @@
     "name": "scrum-daily-leader",
     "version": "1.0.0",
     "private": true,
-    "homepage": "http://jhonandresmedina.github.io/random-data-picker",
+    "homepage": "http://jhonandresmedina.github.io/scrum-daily-leader",
     "scripts": {
         "eslint": "eslint src --color",
         "sass-lint": "sass-lint -v -q -c .sass-lint.yml",
